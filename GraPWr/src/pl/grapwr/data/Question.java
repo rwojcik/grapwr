@@ -6,67 +6,55 @@ import java.util.ArrayList;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class Question implements Serializable
-{
+public class Question implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Answer> answers;
 	private String text;
 	private int remainAnswers;
 	private int answerTimesFail;
 
-	public Question()
-	{
+	public Question() {
 		this.text = "";
 		this.answers = new ArrayList<Answer>(8);
 	}
 
-	public int getRemainAnswers()
-	{
+	public int getRemainAnswers() {
 		return remainAnswers;
 	}
 
-	public void setRemainAnswers(int remainAnswers)
-	{
+	public void setRemainAnswers(int remainAnswers) {
 		this.remainAnswers = remainAnswers;
 	}
 
-	public int getAnswerTimesFail()
-	{
+	public int getAnswerTimesFail() {
 		return answerTimesFail;
 	}
 
-	public void setAnswerTimesFail(int answerTimesFail)
-	{
+	public void setAnswerTimesFail(int answerTimesFail) {
 		this.answerTimesFail = answerTimesFail;
 	}
 
-	public void wrongAnswer()
-	{
+	public void wrongAnswer() {
 		remainAnswers += answerTimesFail;
 	}
 
-	public void goodAnswer()
-	{
+	public void goodAnswer() {
 		remainAnswers--;
 	}
 
-	public String getText()
-	{
+	public String getText() {
 		return text;
 	}
 
-	public void setText(String text)
-	{
+	public void setText(String text) {
 		this.text = text;
 	}
 
-	public ArrayList<Answer> getAnswers()
-	{
+	public ArrayList<Answer> getAnswers() {
 		return answers;
 	}
 
-	public void addAnswer(Answer answer)
-	{
+	public void addAnswer(Answer answer) {
 		answers.add(answer);
 	}
 

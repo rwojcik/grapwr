@@ -20,8 +20,6 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -32,8 +30,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class MainActivity extends Activity
-{
+public class MainActivity extends Activity {
 	private static String TAG = "MainActivity";
 	private Button buttonMainStart;
 	private Spinner spinnerMain;
@@ -45,33 +42,28 @@ public class MainActivity extends Activity
 	private int answerTimesFail = 3;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 
-		if (savedInstanceState == null)
-		{
+		if (savedInstanceState == null) {
 			getFragmentManager().beginTransaction().add(R.id.container, new PlaceholderFragment()).commit();
 		}
 	}
 
 	@Override
-	protected void onStart()
-	{
+	protected void onStart() {
 		// TODO Auto-generated method stub
 		super.onStart();
 		initWidgets();
 	}
 
-	private void initWidgets()
-	{
+	private void initWidgets() {
 		buttonMainStart = (Button) findViewById(R.id.buttonMainStart);
 		buttonMainStart.setOnClickListener(new OnClickListener() {
 
 			@Override
-			public void onClick(View v)
-			{
+			public void onClick(View v) {
 				downloadBase();
 			}
 		});
@@ -85,23 +77,20 @@ public class MainActivity extends Activity
 		seekBarMain1.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 
 			@Override
-			public void onStopTrackingTouch(SeekBar seekBar)
-			{
+			public void onStopTrackingTouch(SeekBar seekBar) {
 				// NOPE
 
 			}
 
 			@Override
-			public void onStartTrackingTouch(SeekBar seekBar)
-			{
+			public void onStartTrackingTouch(SeekBar seekBar) {
 				// textViewMain3.setText((seekBar.getProgress() + 1) + "");
 				// answerTimes = seekBar.getProgress() + 1;
 
 			}
 
 			@Override
-			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
-			{
+			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
 				textViewMain3.setText((progress + 1) + "");
 				answerTimes = progress + 1;
@@ -116,23 +105,20 @@ public class MainActivity extends Activity
 		seekBarMain2.setOnSeekBarChangeListener(new OnSeekBarChangeListener() {
 
 			@Override
-			public void onStopTrackingTouch(SeekBar seekBar)
-			{
+			public void onStopTrackingTouch(SeekBar seekBar) {
 				// NOPE
 
 			}
 
 			@Override
-			public void onStartTrackingTouch(SeekBar seekBar)
-			{
+			public void onStartTrackingTouch(SeekBar seekBar) {
 				// textViewMain5.setText((seekBarMain2.getProgress() + 1) + "");
 				// answerTimesFail = seekBarMain2.getProgress() + 1;
 
 			}
 
 			@Override
-			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser)
-			{
+			public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
 				textViewMain5.setText((progress + 1) + "");
 				answerTimesFail = progress + 1;
@@ -142,66 +128,55 @@ public class MainActivity extends Activity
 
 	}
 
-	public void downloadBase()
-	{
+	public void downloadBase() {
 
 		Class<?> c = Settings.class;
-		try
-		{
+		try {
 			Field locationField = c.getDeclaredField(spinnerMain.getSelectedItem().toString() + "_LOCATION");
 			String location = (String) locationField.get(String.class);
-			// Log.d(TAG, "answerTimes: " + answerTimes + ", answerTimesFail: " + answerTimesFail);
+			// Log.d(TAG, "answerTimes: " + answerTimes + ", answerTimesFail: "
+			// + answerTimesFail);
 			downloadBase(this, location, answerTimes, answerTimesFail);
 
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			Log.e(TAG, "downloadBase", e);
 		}
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu)
-	{
+//	@Override
+//	public boolean onCreateOptionsMenu(Menu menu) {
+//
+//		// Inflate the menu; this adds items to the action bar if it is present.
+//		getMenuInflater().inflate(R.menu.main, menu);
+//		return true;
+//	}
+//
+//	@Override
+//	public boolean onOptionsItemSelected(MenuItem item) {
+//		// Handle action bar item clicks here. The action bar will
+//		// automatically handle clicks on the Home/Up button, so long
+//		// as you specify a parent activity in AndroidManifest.xml.
+//		int id = item.getItemId();
+//		if (id == R.id.action_settings) {
+//			return true;
+//		}
+//		return super.onOptionsItemSelected(item);
+//	}
 
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.main, menu);
-		return true;
-	}
+	public static class PlaceholderFragment extends Fragment {
 
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item)
-	{
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings)
-		{
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
-
-	public static class PlaceholderFragment extends Fragment
-	{
-
-		public PlaceholderFragment()
-		{
+		public PlaceholderFragment() {
 		}
 
 		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-		{
+		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 			View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 			return rootView;
 		}
 	}
 
-	static AsyncTask<String, Integer, ArrayList<Question>> downloadBase(Context context, String location, int answerTimes, int answerTimesFail)
-	{
-		class DownloadingTask extends AsyncTask<String, Integer, ArrayList<Question>>
-		{
+	static AsyncTask<String, Integer, ArrayList<Question>> downloadBase(Context context, String location, int answerTimes, int answerTimesFail) {
+		class DownloadingTask extends AsyncTask<String, Integer, ArrayList<Question>> {
 			private ProgressDialog progressDialog;
 			private String location;
 			private Context context;
@@ -209,16 +184,14 @@ public class MainActivity extends Activity
 			private int answerTimes = 3;
 			private int answerTimesFail = 3;
 
-			public DownloadingTask(Context context, int answerTimes, int answerTimesFail)
-			{
+			public DownloadingTask(Context context, int answerTimes, int answerTimesFail) {
 				this.context = context;
 				this.answerTimes = answerTimes;
 				this.answerTimesFail = answerTimesFail;
 			}
 
 			@Override
-			protected void onPreExecute()
-			{
+			protected void onPreExecute() {
 				super.onPreExecute();
 				Thread.currentThread().setName("SearchingTask");
 				progressDialog = new ProgressDialog(context);
@@ -228,28 +201,23 @@ public class MainActivity extends Activity
 			}
 
 			@Override
-			protected ArrayList<Question> doInBackground(String... params)
-			{
+			protected ArrayList<Question> doInBackground(String... params) {
 				location = params[0];
 				ArrayList<Question> questions = new ArrayList<Question>(81);
 
-				try
-				{
+				try {
 					URL url = new URL(location);
 					BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
 					String inputLine;
-					while ((inputLine = in.readLine()) != null)
-					{
+					while ((inputLine = in.readLine()) != null) {
 
-						if (inputLine.length() > 0 && inputLine.charAt(0) == 'X')
-						{
+						if (inputLine.length() > 0 && inputLine.charAt(0) == 'X') {
 							Question question = new Question();
 
 							char[] chars = inputLine.toCharArray();
 
 							question.setText(in.readLine());
-							for (int i = 1; i < chars.length; i++)
-							{
+							for (int i = 1; i < chars.length; i++) {
 								Answer answer = new Answer();
 								answer.setCorrect(chars[i] == '1');
 								answer.setAnswer(in.readLine());
@@ -261,9 +229,7 @@ public class MainActivity extends Activity
 						}
 					}
 					in.close();
-				}
-				catch (Exception e)
-				{
+				} catch (Exception e) {
 					Log.e(TAG, "AsyncTask.doInBackground", e);
 					Toast.makeText(context, R.string.fail, Toast.LENGTH_LONG).show();
 					this.cancel(true);
@@ -273,21 +239,16 @@ public class MainActivity extends Activity
 			}
 
 			@Override
-			protected void onPostExecute(ArrayList<Question> result)
-			{
+			protected void onPostExecute(ArrayList<Question> result) {
 				super.onPostExecute(result);
 				progressDialog.dismiss();
 
-				try
-				{
+				try {
 					Intent i = new Intent(context, GameActivity.class);
 					i.putExtra("questions", result);
-					// i.putExtra("answerTimes", answerTimes);
-					// i.putExtra("answerTimesFail", answerTimesFail);
+					Log.d(TAG, "result size: "+ result.size());
 					context.startActivity(i);
-				}
-				catch (Exception e)
-				{
+				} catch (Exception e) {
 					Toast.makeText(context, R.string.fail, Toast.LENGTH_LONG).show();
 					Log.e(TAG, "AsyncTask.onPostExecute", e);
 					this.cancel(true);

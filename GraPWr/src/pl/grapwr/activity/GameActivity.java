@@ -10,14 +10,13 @@ import pl.grapwr.data.Answer;
 import pl.grapwr.data.Question;
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.PorterDuff.Mode;
 import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -27,8 +26,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-public class GameActivity extends Activity
-{
+public class GameActivity extends Activity {
 
 	private static final String TAG = "GameActivity";
 	private ArrayList<Question> questions;
@@ -46,37 +44,31 @@ public class GameActivity extends Activity
 	private boolean answered = false;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState)
-	{
+	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_game);
 
-		if (savedInstanceState == null)
-		{
+		if (savedInstanceState == null) {
 			getFragmentManager().beginTransaction().add(R.id.container, new PlaceholderFragment()).commit();
 		}
 
-		try
-		{
+		try {
 			questions = (ArrayList<Question>) getIntent().getSerializableExtra("questions");
+			Log.d(TAG, "questions size: "+ questions.size());
 
-		}
-		catch (Exception e)
-		{
+		} catch (Exception e) {
 			Log.e(TAG, "onCreate", e);
 		}
 	}
 
 	@Override
-	protected void onStart()
-	{
+	protected void onStart() {
 		super.onStart();
 		initWidgets();
 		fillQuestion();
 	}
 
-	private void initWidgets()
-	{
+	private void initWidgets() {
 		textViewGame1 = (TextView) findViewById(id.textViewGame1);
 		textViewGame2 = (TextView) findViewById(id.textViewGame2);
 		progressBarGame1 = (ProgressBar) findViewById(id.progressBarGame1);
@@ -87,17 +79,16 @@ public class GameActivity extends Activity
 //		progressBarGame2.getProgressDrawable().setColorFilter(Color.GREEN, Mode.CLEAR);
 		progressBarGame2.setMax(questions.size());
 
-		checkBoxes = new CheckBox[] { (CheckBox) findViewById(id.checkBoxGame1), (CheckBox) findViewById(id.checkBoxGame2),
-				(CheckBox) findViewById(id.checkBoxGame3), (CheckBox) findViewById(id.checkBoxGame4), (CheckBox) findViewById(id.checkBoxGame5),
-				(CheckBox) findViewById(id.checkBoxGame6), (CheckBox) findViewById(id.checkBoxGame7), (CheckBox) findViewById(id.checkBoxGame8) };
+		checkBoxes = new CheckBox[] { (CheckBox) findViewById(id.checkBoxGame1), (CheckBox) findViewById(id.checkBoxGame2), (CheckBox) findViewById(id.checkBoxGame3),
+				(CheckBox) findViewById(id.checkBoxGame4), (CheckBox) findViewById(id.checkBoxGame5), (CheckBox) findViewById(id.checkBoxGame6),
+				(CheckBox) findViewById(id.checkBoxGame7), (CheckBox) findViewById(id.checkBoxGame8) };
 		buttonGame1 = (Button) findViewById(id.buttonGame1);
 
 		if (buttonGame1 != null)
 			buttonGame1.setOnClickListener(new OnClickListener() {
 
 				@Override
-				public void onClick(View v)
-				{
+				public void onClick(View v) {
 					if (answered)
 						fillQuestion();
 					else
@@ -106,8 +97,7 @@ public class GameActivity extends Activity
 			});
 	}
 
-	private void fillQuestion()
-	{
+	private void fillQuestion() {
 		answered = false;
 		buttonGame1.setText(R.string.check_answer);
 		currentQuestion = questions.get(random.nextInt(questions.size()));
@@ -122,16 +112,14 @@ public class GameActivity extends Activity
 
 		int activeCheckBoxes = answers.size();
 
-		for (int i = 8; i > activeCheckBoxes; i--)
-		{
+		for (int i = 8; i > activeCheckBoxes; i--) {
 			CheckBox checkBox = checkBoxes[i - 1];
 			checkBox.setChecked(false);
 			checkBox.setVisibility(View.INVISIBLE);
 
 		}
 
-		for (int i = 1; i <= activeCheckBoxes; i++)
-		{
+		for (int i = 1; i <= activeCheckBoxes; i++) {
 
 			CheckBox checkBox = checkBoxes[i - 1];
 			checkBox.setChecked(false);
@@ -144,13 +132,11 @@ public class GameActivity extends Activity
 
 	}
 
-	private void checkQuestion()
-	{
+	private void checkQuestion() {
 		int activeCheckBoxes = answers.size();
 		boolean correct = true;
 
-		for (int i = 1; i <= activeCheckBoxes; i++)
-		{
+		for (int i = 1; i <= activeCheckBoxes; i++) {
 			Answer tempAnswer = answers.get(i - 1);
 			CheckBox checkBox = checkBoxes[i - 1];
 			checkBox.setClickable(false);
@@ -161,35 +147,34 @@ public class GameActivity extends Activity
 			{
 				((TextView) checkBox).setTextColor(Color.RED);
 				correct = false;
-			}
-			else
-			{
+			} else {
 				((TextView) checkBox).setTextColor(0xFF00E300);
 			}
 
 		}
 
-		if (correct)
-		{
+		if (correct) {
 			textViewGame2.setText(R.string.good_answer);
 			goodAnswers++;
 			currentQuestion.goodAnswer();
-			if (currentQuestion.getRemainAnswers() < 1)
-			{
+			if (currentQuestion.getRemainAnswers() < 1) {
 				progressBarGame2.setProgress(progressBarGame2.getProgress() + 1);
 				questions.remove(currentQuestion);
 			}
 
-		}
-		else
-		{
+		} else {
 			textViewGame2.setText(R.string.wrong_answer);
 			badAnswers++;
 			currentQuestion.wrongAnswer();
 		}
-		
-		if(questions.isEmpty()){
-		    Toast.makeText(this.getApplicationContext(), "Koniec nauki", Toast.LENGTH_LONG).show();
+
+		if (questions.isEmpty()) {
+			Toast.makeText(this, "Koniec nauki", Toast.LENGTH_LONG).show();
+			
+			Intent i = new Intent(this, FinishActivity.class);
+			i.putExtra("goodAnswers", goodAnswers);
+			i.putExtra("badAnswers", badAnswers);
+			this.startActivity(i);
 		}
 
 		progressBarGame1.setMax(badAnswers + goodAnswers);
@@ -202,42 +187,38 @@ public class GameActivity extends Activity
 		answered = true;
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu)
-	{
-
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.game, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item)
-	{
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings)
-		{
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
+//	@Override
+//	public boolean onCreateOptionsMenu(Menu menu) {
+//
+//		// Inflate the menu; this adds items to the action bar if it is present.
+//		getMenuInflater().inflate(R.menu.game, menu);
+//		return true;
+//	}
+//
+//	@Override
+//	public boolean onOptionsItemSelected(MenuItem item) {
+//		// Handle action bar item clicks here. The action bar will
+//		// automatically handle clicks on the Home/Up button, so long
+//		// as you specify a parent activity in AndroidManifest.xml.
+//		int id = item.getItemId();
+//		if (id == R.id.action_settings) {
+//			Intent i = new Intent(this, FinishActivity.class);
+//			this.startActivity(i);
+//			return true;
+//		}
+//		return super.onOptionsItemSelected(item);
+//	}
 
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */
-	public static class PlaceholderFragment extends Fragment
-	{
+	public static class PlaceholderFragment extends Fragment {
 
-		public PlaceholderFragment()
-		{
+		public PlaceholderFragment() {
 		}
 
 		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
-		{
+		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 			View rootView = inflater.inflate(R.layout.fragment_game, container, false);
 			return rootView;
 		}
