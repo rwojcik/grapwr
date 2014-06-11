@@ -24,6 +24,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -55,7 +56,7 @@ public class GameActivity extends Activity {
 
 		try {
 			questions = (ArrayList<Question>) getIntent().getSerializableExtra("questions");
-			Log.d(TAG, "questions size: "+ questions.size());
+			Log.d(TAG, "questions size: " + questions.size());
 
 		} catch (Exception e) {
 			Log.e(TAG, "onCreate", e);
@@ -73,11 +74,13 @@ public class GameActivity extends Activity {
 		textViewGame1 = (TextView) findViewById(id.textViewGame1);
 		textViewGame2 = (TextView) findViewById(id.textViewGame2);
 		progressBarGame1 = (ProgressBar) findViewById(id.progressBarGame1);
-		//progressBarGame1.getProgressDrawable().setColorFilter(Color.GREEN, Mode.CLEAR);
-		//progressBarGame1.setProgressDrawable(this.getResources().getDrawable(R.drawable.game_progressbar));
-		
+		// progressBarGame1.getProgressDrawable().setColorFilter(Color.GREEN,
+		// Mode.CLEAR);
+		// progressBarGame1.setProgressDrawable(this.getResources().getDrawable(R.drawable.game_progressbar));
+
 		progressBarGame2 = (ProgressBar) findViewById(id.progressBarGame2);
-//		progressBarGame2.getProgressDrawable().setColorFilter(Color.GREEN, Mode.CLEAR);
+		// progressBarGame2.getProgressDrawable().setColorFilter(Color.GREEN,
+		// Mode.CLEAR);
 		progressBarGame2.setMax(questions.size());
 
 		checkBoxes = new CheckBox[] { (CheckBox) findViewById(id.checkBoxGame1), (CheckBox) findViewById(id.checkBoxGame2), (CheckBox) findViewById(id.checkBoxGame3),
@@ -117,7 +120,6 @@ public class GameActivity extends Activity {
 			CheckBox checkBox = checkBoxes[i - 1];
 			checkBox.setChecked(false);
 			checkBox.setVisibility(View.INVISIBLE);
-
 		}
 
 		for (int i = 1; i <= activeCheckBoxes; i++) {
@@ -130,6 +132,17 @@ public class GameActivity extends Activity {
 			checkBox.setText((CharSequence) answers.get(i - 1).getAnswer());
 			checkBox.setTypeface(null, Typeface.NORMAL);
 		}
+		
+		RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+		        ViewGroup.LayoutParams.WRAP_CONTENT);
+
+		p.addRule(RelativeLayout.BELOW, checkBoxes[activeCheckBoxes-1].getId());
+		p.setMargins(0, 10, 0, 0);
+		p.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
+		p.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+
+		buttonGame1.setLayoutParams(p);
+//		checkBoxes[activeCheckBoxes]
 
 	}
 
@@ -141,16 +154,16 @@ public class GameActivity extends Activity {
 			Answer tempAnswer = answers.get(i - 1);
 			CheckBox checkBox = checkBoxes[i - 1];
 			checkBox.setClickable(false);
+//			if (tempAnswer.isCorrect())
+			// checkBox.setTypeface(null, Typeface.BOLD);
+
 			if (tempAnswer.isCorrect())
-				checkBox.setTypeface(null, Typeface.BOLD);
-			
-			if(checkBox.isChecked() ^ tempAnswer.isCorrect())
-			{
+				((TextView) checkBox).setTextColor(Color.GREEN);
+			else
 				((TextView) checkBox).setTextColor(Color.RED);
+
+			if (checkBox.isChecked() ^ tempAnswer.isCorrect()) //XOR
 				correct = false;
-			} else {
-				((TextView) checkBox).setTextColor(0xFF00E300);
-			}
 
 		}
 
@@ -171,7 +184,7 @@ public class GameActivity extends Activity {
 
 		if (questions.isEmpty()) {
 			Toast.makeText(this, "Koniec nauki", Toast.LENGTH_LONG).show();
-			
+
 			Intent i = new Intent(this, FinishActivity.class);
 			i.putExtra("goodAnswers", goodAnswers);
 			i.putExtra("badAnswers", badAnswers);
@@ -209,6 +222,7 @@ public class GameActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
+
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */

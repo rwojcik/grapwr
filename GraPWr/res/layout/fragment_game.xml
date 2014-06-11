@@ -10,6 +10,7 @@
     tools:context="pl.grapwr.GameActivity$PlaceholderFragment" >
 
     <RelativeLayout
+        android:id="@+id/relativeLayoutGame"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" >
 
