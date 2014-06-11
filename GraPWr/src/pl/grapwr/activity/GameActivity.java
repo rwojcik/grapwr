@@ -132,17 +132,16 @@ public class GameActivity extends Activity {
 			checkBox.setText((CharSequence) answers.get(i - 1).getAnswer());
 			checkBox.setTypeface(null, Typeface.NORMAL);
 		}
-		
-		RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-		        ViewGroup.LayoutParams.WRAP_CONTENT);
 
-		p.addRule(RelativeLayout.BELOW, checkBoxes[activeCheckBoxes-1].getId());
+		RelativeLayout.LayoutParams p = new RelativeLayout.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+
+		p.addRule(RelativeLayout.BELOW, checkBoxes[activeCheckBoxes - 1].getId());
 		p.setMargins(0, 10, 0, 0);
 		p.addRule(RelativeLayout.ALIGN_PARENT_LEFT);
 		p.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
 
 		buttonGame1.setLayoutParams(p);
-//		checkBoxes[activeCheckBoxes]
+		// checkBoxes[activeCheckBoxes]
 
 	}
 
@@ -154,7 +153,7 @@ public class GameActivity extends Activity {
 			Answer tempAnswer = answers.get(i - 1);
 			CheckBox checkBox = checkBoxes[i - 1];
 			checkBox.setClickable(false);
-//			if (tempAnswer.isCorrect())
+			// if (tempAnswer.isCorrect())
 			// checkBox.setTypeface(null, Typeface.BOLD);
 
 			if (tempAnswer.isCorrect())
@@ -162,7 +161,7 @@ public class GameActivity extends Activity {
 			else
 				((TextView) checkBox).setTextColor(Color.RED);
 
-			if (checkBox.isChecked() ^ tempAnswer.isCorrect()) //XOR
+			if (checkBox.isChecked() ^ tempAnswer.isCorrect()) // XOR
 				correct = false;
 
 		}
@@ -201,27 +200,29 @@ public class GameActivity extends Activity {
 		answered = true;
 	}
 
-	@Override
-	public boolean onCreateOptionsMenu(Menu menu) {
-
-		// Inflate the menu; this adds items to the action bar if it is present.
-		getMenuInflater().inflate(R.menu.game, menu);
-		return true;
-	}
-
-	@Override
-	public boolean onOptionsItemSelected(MenuItem item) {
-		// Handle action bar item clicks here. The action bar will
-		// automatically handle clicks on the Home/Up button, so long
-		// as you specify a parent activity in AndroidManifest.xml.
-		int id = item.getItemId();
-		if (id == R.id.action_settings) {
-			Intent i = new Intent(this, FinishActivity.class);
-			this.startActivity(i);
-			return true;
-		}
-		return super.onOptionsItemSelected(item);
-	}
+//	@Override
+//	public boolean onCreateOptionsMenu(Menu menu) {
+//
+//		// Inflate the menu; this adds items to the action bar if it is present.
+//		getMenuInflater().inflate(R.menu.game, menu);
+//		return true;
+//	}
+//
+//	@Override
+//	public boolean onOptionsItemSelected(MenuItem item) {
+//		// Handle action bar item clicks here. The action bar will
+//		// automatically handle clicks on the Home/Up button, so long
+//		// as you specify a parent activity in AndroidManifest.xml.
+//		int id = item.getItemId();
+//		if (id == R.id.action_settings) {
+//			Intent i = new Intent(this, FinishActivity.class);
+//			i.putExtra("goodAnswers", goodAnswers);
+//			i.putExtra("badAnswers", badAnswers);
+//			this.startActivity(i);
+//			return true;
+//		}
+//		return super.onOptionsItemSelected(item);
+//	}
 
 	/**
 	 * A placeholder fragment containing a simple view.
