@@ -12,6 +12,7 @@ import android.app.Activity;
 import android.app.Fragment;
 import android.content.Intent;
 import android.graphics.Color;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -127,7 +128,7 @@ public class GameActivity extends Activity {
 			((TextView) checkBox).setTextColor(Color.BLACK);
 			checkBox.setClickable(true);
 			checkBox.setText((CharSequence) answers.get(i - 1).getAnswer());
-
+			checkBox.setTypeface(null, Typeface.NORMAL);
 		}
 
 	}
@@ -140,11 +141,15 @@ public class GameActivity extends Activity {
 			Answer tempAnswer = answers.get(i - 1);
 			CheckBox checkBox = checkBoxes[i - 1];
 			checkBox.setClickable(false);
-			if (checkBox.isChecked() == tempAnswer.isCorrect()) {
-				((TextView) checkBox).setTextColor(Color.GREEN);
-			} else {
+			if (tempAnswer.isCorrect())
+				checkBox.setTypeface(null, Typeface.BOLD);
+			
+			if(checkBox.isChecked() ^ tempAnswer.isCorrect())
+			{
 				((TextView) checkBox).setTextColor(Color.RED);
 				correct = false;
+			} else {
+				((TextView) checkBox).setTextColor(0xFF00E300);
 			}
 
 		}
@@ -204,7 +209,6 @@ public class GameActivity extends Activity {
 		}
 		return super.onOptionsItemSelected(item);
 	}
-
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */
