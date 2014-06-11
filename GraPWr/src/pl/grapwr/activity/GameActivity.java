@@ -71,9 +71,11 @@ public class GameActivity extends Activity {
 		textViewGame1 = (TextView) findViewById(id.textViewGame1);
 		textViewGame2 = (TextView) findViewById(id.textViewGame2);
 		progressBarGame1 = (ProgressBar) findViewById(id.progressBarGame1);
-		progressBarGame1.getProgressDrawable().setColorFilter(Color.GREEN, Mode.CLEAR);
+		//progressBarGame1.getProgressDrawable().setColorFilter(Color.GREEN, Mode.CLEAR);
+		//progressBarGame1.setProgressDrawable(this.getResources().getDrawable(R.drawable.game_progressbar));
+		
 		progressBarGame2 = (ProgressBar) findViewById(id.progressBarGame2);
-		progressBarGame2.getProgressDrawable().setColorFilter(Color.GREEN, Mode.CLEAR);
+//		progressBarGame2.getProgressDrawable().setColorFilter(Color.GREEN, Mode.CLEAR);
 		progressBarGame2.setMax(questions.size());
 
 		checkBoxes = new CheckBox[] { (CheckBox) findViewById(id.checkBoxGame1), (CheckBox) findViewById(id.checkBoxGame2), (CheckBox) findViewById(id.checkBoxGame3),

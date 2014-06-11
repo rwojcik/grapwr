@@ -110,7 +110,8 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
-            android:layout_below="@id/textViewGame3" />
+            android:layout_below="@id/textViewGame3"
+            android:progressDrawable="@drawable/game_progressbar" />
 
         <TextView
             android:id="@+id/textViewGame4"
