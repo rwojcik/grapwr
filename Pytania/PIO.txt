@@ -1,4 +1,5 @@
-﻿X0011
+﻿
+X0011
 1. Zakresem zainteresowania inżynierii oprogramowania jest:
 eksploatacja oprogramowania
 handel oprogramowaniem
