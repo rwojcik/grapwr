@@ -4,3 +4,17 @@ eksploatacja oprogramowania
 handel oprogramowaniem
 wytwarzanie oprogramowania
 pielęgnacja oprogramowania
+
+X0100
+2. Okres od powstania koncepcji oprogramowania do wycofania oprogramowania jest nazywany:
+życiem oprogramowania
+cyklem życia oprogramowania
+opracowaniem oprogramowania
+dystrybucją oprogramowania
+
+X0101
+3. Produktem programowym jest:
+system komputerowy wraz az oprogramowaniem
+program komputerowy
+proces wytwarzania
+dokumentacja użytkownika
