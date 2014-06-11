@@ -150,7 +150,7 @@ public class MainActivity extends Activity
 		{
 			Field locationField = c.getDeclaredField(spinnerMain.getSelectedItem().toString() + "_LOCATION");
 			String location = (String) locationField.get(String.class);
-//			Log.d(TAG, "answerTimes: " + answerTimes + ", answerTimesFail: " + answerTimesFail);
+			// Log.d(TAG, "answerTimes: " + answerTimes + ", answerTimesFail: " + answerTimesFail);
 			downloadBase(this, location, answerTimes, answerTimesFail);
 
 		}

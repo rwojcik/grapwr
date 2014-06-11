@@ -1,8 +1,6 @@
 package pl.grapwr.activity;
 
-import java.lang.reflect.Field;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Random;
 
@@ -12,6 +10,8 @@ import pl.grapwr.data.Answer;
 import pl.grapwr.data.Question;
 import android.app.Activity;
 import android.app.Fragment;
+import android.graphics.Color;
+import android.graphics.PorterDuff.Mode;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -22,26 +22,26 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class GameActivity extends Activity
 {
 
 	private static final String TAG = "GameActivity";
-	private ArrayList<Question> questions = null;
+	private ArrayList<Question> questions;
 	private Random random = new Random(System.nanoTime());
 	private TextView textViewGame1;
-	// private CheckBox checkBoxGame1;
-	// private CheckBox checkBoxGame2;
-	// private CheckBox checkBoxGame3;
-	// private CheckBox checkBoxGame4;
-	// private CheckBox checkBoxGame5;
-	// private CheckBox checkBoxGame6;
-	// private CheckBox checkBoxGame7;
-	// private CheckBox checkBoxGame8;
+	private TextView textViewGame2;
+	private ProgressBar progressBarGame1;
+	private ProgressBar progressBarGame2;
 	private CheckBox[] checkBoxes;
 	private Button buttonGame1;
 	private Question currentQuestion;
+	private int goodAnswers = 0;
+	private int badAnswers = 0;
+	private ArrayList<Answer> answers;
+	private boolean answered = false;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
@@ -76,6 +76,13 @@ public class GameActivity extends Activity
 	private void initWidgets()
 	{
 		textViewGame1 = (TextView) findViewById(id.textViewGame1);
+		textViewGame2 = (TextView) findViewById(id.textViewGame2);
+		progressBarGame1 = (ProgressBar) findViewById(id.progressBarGame1);
+		progressBarGame1.getProgressDrawable().setColorFilter(Color.GREEN, Mode.SRC_IN);
+		progressBarGame2 = (ProgressBar) findViewById(id.progressBarGame2);
+		progressBarGame2.getProgressDrawable().setColorFilter(Color.GREEN, Mode.SRC_IN);
+		progressBarGame2.setMax(questions.size());
+
 		checkBoxes = new CheckBox[] { (CheckBox) findViewById(id.checkBoxGame1), (CheckBox) findViewById(id.checkBoxGame2),
 				(CheckBox) findViewById(id.checkBoxGame3), (CheckBox) findViewById(id.checkBoxGame4), (CheckBox) findViewById(id.checkBoxGame5),
 				(CheckBox) findViewById(id.checkBoxGame6), (CheckBox) findViewById(id.checkBoxGame7), (CheckBox) findViewById(id.checkBoxGame8) };
@@ -87,20 +94,26 @@ public class GameActivity extends Activity
 				@Override
 				public void onClick(View v)
 				{
-
+					if (answered)
+						fillQuestion();
+					else
+						checkQuestion();
 				}
 			});
 	}
 
 	private void fillQuestion()
 	{
+		answered = false;
+		buttonGame1.setText(R.string.check_answer);
 		currentQuestion = questions.get(random.nextInt(questions.size()));
 		while (currentQuestion.getRemainAnswers() < 1)
 			currentQuestion = questions.get(random.nextInt(questions.size()));
 
 		textViewGame1.setText(currentQuestion.getText());
+		textViewGame2.setText("");
 
-		ArrayList<Answer> answers = currentQuestion.getAnswers();
+		answers = currentQuestion.getAnswers();
 		Collections.shuffle(answers, random);
 
 		int activeCheckBoxes = answers.size();
@@ -119,10 +132,63 @@ public class GameActivity extends Activity
 			CheckBox checkBox = checkBoxes[i - 1];
 			checkBox.setChecked(false);
 			checkBox.setVisibility(View.VISIBLE);
+			((TextView) checkBox).setTextColor(Color.BLACK);
+			checkBox.setClickable(true);
 			checkBox.setText((CharSequence) answers.get(i - 1).getAnswer());
 
 		}
 
+	}
+
+	private void checkQuestion()
+	{
+		int activeCheckBoxes = answers.size();
+		boolean correct = true;
+
+		for (int i = 1; i <= activeCheckBoxes; i++)
+		{
+			Answer tempAnswer = answers.get(i - 1);
+			CheckBox checkBox = checkBoxes[i - 1];
+			checkBox.setClickable(false);
+			if (checkBox.isChecked() == tempAnswer.isCorrect())
+			{
+				((TextView) checkBox).setTextColor(Color.GREEN);
+			}
+			else
+			{
+				((TextView) checkBox).setTextColor(Color.RED);
+				correct = false;
+			}
+
+		}
+
+		if (correct)
+		{
+			textViewGame2.setText(R.string.good_answer);
+			goodAnswers++;
+			currentQuestion.goodAnswer();
+			if (currentQuestion.getRemainAnswers() < 1)
+			{
+				progressBarGame2.setProgress(progressBarGame2.getProgress() + 1);
+				questions.remove(currentQuestion);
+			}
+
+		}
+		else
+		{
+			textViewGame2.setText(R.string.wrong_answer);
+			badAnswers++;
+			currentQuestion.wrongAnswer();
+		}
+
+		progressBarGame1.setMax(badAnswers + goodAnswers);
+		if (badAnswers == 0)
+			progressBarGame1.setProgress(goodAnswers);
+		else
+			progressBarGame1.setProgress(goodAnswers / badAnswers);
+
+		buttonGame1.setText(R.string.next_question);
+		answered = true;
 	}
 
 	@Override
