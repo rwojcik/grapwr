@@ -1,0 +1,587 @@
+X0011
+1. Zakresem zainteresowania in¿ynierii oprogramowania jest:
+eksploatacja oprogramowania
+handel oprogramowaniem
+wytwarzanie oprogramowania
+pielêgnacja oprogramowania
+
+X0100
+2. Okres od powstania koncepcji oprogramowania do wycofania oprogramowania jest nazywany:
+¿yciem oprogramowania
+cyklem ¿ycia oprogramowania
+opracowaniem oprogramowania
+dystrybucj¹ oprogramowania
+
+X0101
+3. Produktem programowym jest:
+system komputerowy wraz az oprogramowaniem
+program komputerowy
+proces wytwarzania
+dokumentacja u¿ytkownika
+
+X1011
+4. Specyfikacja wymagañ powinna byæ:
+jednoznaczna
+niekompletna
+weryfikowalna
+œladowalna
+
+X1100
+5. Wymagania mo¿na opisaæ w postaci:
+diagramów przypadków u¿ycia 
+w jêzyku naturalnym
+tablic decyzyjnych
+notacji formalnej np. UML
+
+X0010
+6. Diagramu przypadków u¿ycia UML u¿ywa siê w celu:
+prezentacji s³ownika systemowego
+opisu wymagañ niefunkcjonalnych
+opisu wymagañ funkcjonalnych
+opisu budowy systemu
+
+X1011
+7. Dwa przypadki u¿ycia mog¹ byæ po³¹czone zale¿noœci¹:
+asocjacj¹
+zale¿noœci¹ «import»
+zale¿noœci¹ «extend» 
+relacj¹ generalizacji
+
+X11101
+8. Realizacja przypadków u¿ycia mo¿e byæ definiowana:
+jako tekstowy opis w j. naturalnym 
+przez diagram aktywnoœci
+przez diagram klas
+przez diagram przypadków u¿ycia
+przez diagram sekwencji
+
+X1000
+9. Opis zbioru obiektów, które posiadaj¹ te same atrybuty, operacje, jest nazywany:
+klas¹ 
+obiektem 
+taksonomi¹
+generalizacj¹
+
+X111
+10. Agregacja pe³na (kompozycja) w UML:
+to szczególny przypadek asocjacji
+to relacja opisuj¹ca zale¿noœæ strukturaln¹
+jest oznaczana zamalowanym rombem
+
+X1110
+11. Stereotyp w j. UML to taki mechanizm, który:
+mo¿e byæ zastosowany do dowolnego elementu modelu
+uœciœla semantykê pewnego elementu jêzyka
+rozszerza semantykê jêzyka UML
+jest instancj¹ klasy
+
+X1011
+12. Przypadek u¿ycia w UML:
+jest us³ug¹ systemu
+musi mieæ nazwê i parametry
+jest wywo³ywany przez aktora
+jest opisywany diagramem aktywnoœci
+
+X111
+13. Celem projektowania podsystemu jest:
+dostarczenie poprawnego interfejsu w³asnego
+zapewnienie poprawnej realizacji operacji, które dostarcza
+niezale¿noœci podsystemu od innych podsystemów
+
+X1111
+14. Jaki rodzaj widzialnoœci mo¿e byæ zdefiniowany dla klasy:
++ publiczna
+- chroniona
+~ pakietowa
+# prywatna
+
+X01011
+15. Generalizacja mo¿e byæ zdefiniowana pomiêdzy nastêpuj¹cymi elementami UML:
+asocjacjami
+klasami
+notatkami
+aktorami
+przypadkami u¿ycia
+
+X1111
+16. Podstawowe dyscypliny procesu wytwarzania programowania to:
+specyfikacja wymagañ
+konserwacja 
+implementacja
+testowanie
+
+X0111
+17. Diagram przypadków u¿ycia jest grafem sk³adaj¹cym siê z:
+klas
+aktorów
+asocjacji komunikacyjnej
+przypadków u¿ycia
+
+X1000
+18. W celu organizacji odpowiedzialnoœci u¿ywa siê w diagramach aktywnoœci:
+partycji
+obiektów
+przep³ywu sterowania
+akcji
+
+X0010
+19. Klasa abstrakcyjna w UMLu:
+nie ma metod
+musi mieæ co najmniej jeden atrybut
+nie ma swoich instancji
+jest interfejsem
+
+X110
+20. Agregacja w UML:
+to szczególny przypadek asocjacji
+to relacja opisuj¹ca zale¿noœæ strukturaln¹
+jest oznaczona zamalowanym rombem
+
+X1101
+21. W OCL predefiniowanymi typami kolekcyjnymi s¹:
+Set
+Bag
+oclType
+Sequence
+
+X0011
+22. Inwariant (niezmiennik) w OCL:
+jest wyra¿eniem arytmetycznym OCL
+poprzedzony jest s³owem context
+poprzedzony jest s³owem inv
+dotyczy atrybutów
+
+X1001
+23. Diagram rozmieszczenia prezentuje:
+wêz³y oraz ich po³¹czenia
+obiekty aktywne
+odwzorowanie oprogramowania na platformê sprzêtow¹
+rozmieszczenie komponentów w wêz³ach
+
+X11110
+24. Inwariant (niezmiennik) w OCL:
+jest wyra¿eniem logicznym w OCL
+definiuje siê dla klasy/typu
+poprzedzony jest s³owem inv
+dotyczy atrybutu klasy
+poprzedzony jest s³owem context
+
+X011110
+25. Przyk³adami operacji na kolekcjach OCL s¹:
+empty
+select
+iterate
+sum
+size
+collection
+
+X0110
+26. Realizacja przypadku u¿ycia mo¿e byæ opisana:
+diagramem przypadków u¿ycia
+diagramem sekwencji
+s³ownie
+diagramem stanów
+
+X1111
+27. Model projektowy:
+pokazuje szczegó³y implementacji
+pokazuje poziomy architektury systemu
+powinien byæ pielêgnowany
+wykorzystuje wiele stereotypów
+
+X1111
+28. System zarz¹dzania wersjami:
+pozwala na cofanie zmian np. w kodzie
+pozwala na dokonywanie przegl¹dów
+automatycznie wersjonuje poprawione pliki
+rozwi¹zuje konflikty w ³¹czeniu plików
+
+X0111
+29. Projekt (przedsiêwziêcie) informatyczne:
+obejmuje rutynowy zestaw dzia³añ
+jest ryzykowny
+jego celem jest wytworzenie produktu us³ugi
+ma okreœlony czas trwania
+
+X0110
+30. Celem tworzenia prototypu interfejsu u¿ytkownika jest:
+realizacja diagramu klas
+weryfikacja modelu przypadków u¿ycia
+okrywanie nowych wymagañ u¿ytkownika
+modelowanie przep³ywu danych miêdzy u¿ytkownikami
+
+X0101
+31. Które ze stwierdzenie pasuj¹ do zasad projektowania GUI nale¿¹:
+maksymalizacja odcinków do pokonania kursora myszy oraz wzroku u¿ytkownika
+przycisk tabulatora pozwala na przechodzenie pomiêdzy polami w logicznym porz¹dku
+nawigacja powinna odbywaæ siê z lewej do prawej, od do³u w górê
+interfejs powinien posiadaæ optymaln¹ iloœæ elementów na ekranie
+
+X0010
+32. Diagram pokazuj¹cy wymianê komunikatów miêdzy obiektami to diagram:
+stanu
+wzorca architektonicznego
+sekwencji
+przypadków u¿ycia
+
+X1110
+33. W których diagramach nie wystêpuj¹ klasy:
+diagram sekwencji
+diagram przypadków u¿ycia
+diagram stanu
+diagram klas
+
+X10101
+34. W OCL mo¿na definiowaæ:
+inwarianty dla klas obiektów
+inwarianty dla operacji
+warunki pre i post dla operacji
+warunki pre i post dla atrybutów
+specyfikacjê wyra¿eñ nawigacyjnych
+
+X1110
+35. Zakres testowania strukturalnego obejmuje:
+testy pokrycia œcie¿ek programu
+testy œledzenia wykonania
+testy pokrycia kodu
+testy efektywnoœci
+
+X10111
+36. W OCL predefiniowanymi typami prostymi s¹:
+String
+Char 
+Integer
+Real
+Boolean
+
+X0111 
+37. Wyró¿nia siê nastêpuj¹ce klasy wzorców projektowych:
+architektoniczne
+strukturalne
+zachowania (behawioralne)
+kreacji obiektów
+
+X111
+38. Celem projektowania przypadku u¿ycia jest:
+identyfikacja klas, które w nim uczestnicz¹
+rozdzielenie zachowania pomiêdzy klasy
+zdefiniowanie wymagañ dotycz¹cych operacji
+rozpoznanie wymagañ implementacyjnych
+
+X1001
+39. Zakres testowania funkcjonalnego obejmuje:
+testy elementów interfejsu
+testy pokrycia kodu
+testy pokrycia odga³êzieñ
+testy funkcji systemu
+
+X0101
+40. Metoda punktów funkcyjnych jest wykorzystywana do:
+oceny jakoœci
+szacowania kosztów
+wykonywania przegl¹dów
+oceny z³o¿onoœci oprogramowania
+
+X0100
+41. Cykl ¿ycia oprogramowania zak³adaj¹cy, ¿e aktywnoœci wykonuje siê sekwencyjnie, ka¿d¹ po zakoñczeniu poprzedniej nazywa siê:
+modelem spiralnym
+modelem kaskadowym (wodospadowym)
+modelem prototypowania
+modelem iteracyjnym
+
+X1110
+42. Diagram aktywnoœci mo¿e byæ wykorzystany do prezentacji:
+przep³ywu obiektów pomiêdzy akcjami 
+przep³ywu biznesowego (dziedzinowego)
+scenariusza przypadku u¿ycia
+implementacji algorytmu
+
+X0111
+43. Pomiêdzy klasami w UML mog¹ zachodziæ nastêpuj¹ce zale¿noœci i relacje:
+enkapsulacji
+realizacji
+asocjacji
+implementacji
+
+X10011
+44. Obiekt w UMLu:
+jest modelem pewnego bytu z rzeczywistoœci
+musi mieæ nazwê
+mo¿e byæ abstrakcyjny
+mo¿e byæ anonimowy
+jest instancj¹ klasy
+
+X0110
+45. Diagram aktywnoœci jest u¿ywany do:
+pokazania obliczeñ programu lub metod
+modelowania przep³ywu prac w organizacji (procesów biznesowych)
+opisu zachowañ przypadku u¿ycia
+pokazania struktury komponentu
+
+X1101
+46. Wybierz prawdziwe zdania o asocjacjach:
+asocjacja mo¿e mieæ wiêcej ni¿ dwa koñce
+specjalnym rodzajem asocjacji jest agregacja lub kompozycja
+specjalnym rodzajem asocjacji jest generalizacja lub realizacja
+asocjacja mo¿e byæ jednokierunkowa
+
+X0101
+47. Pomiêdzy przypadkami u¿ycia w UML mog¹ zachodziæ zale¿noœci:
+realizacji (inaczej implementacja)
+generalizacji (czyli dziedziczenie)
+<<entity>>
+<<include>>
+
+X01010
+48. Ogólnie pomiêdzy przypadkami u¿ycia w UML mog¹ zachodziæ zale¿noœci:
+asocjacja
+asocjacja z kierunkiem nawigacji
+zale¿noœci: <<include>>, <<extend>>, <<refine>>
+uogólnienie
+realizacja
+
+X011
+49. Klasa asocjacji:
+opisuje ró¿ne rodzaje zale¿noœci, które mog¹ istnieæ miêdzy klasami
+mo¿e mieæ wiêcej ni¿ dwa koñce
+dodaje atrybuty i/lub zachowanie do asocjacji zachodz¹cej miêdzy dwoma innymi klasami
+
+X1110
+50. Sukces projektu jest rozumiany jako osi¹gniêcie:
+po¿¹danej jakoœci
+dotrzymania kosztów
+dotrzymania terminu
+niezawodnoœci oprogramowania
+
+X10100
+51. Formalny przegl¹d mo¿e przyj¹æ postaæ:
+audytu
+przejœcia
+inspekcji
+kontroli
+weryfikacji
+
+X1011
+52. Do metod szacowania kosztów przedsiêwziêcia nale¿¹:
+os¹d eksperta
+najmniejszego ryzyka
+algorytmiczna
+analogii
+
+X00101
+53. Celem projektowania klasy jest okreœlenie:
+instancji
+zdarzenia, które klasa obs³uguje
+interfejsu klasy
+komunikacji z innymi klasami
+atrybutów klasy
+
+X11111
+54. Model projektowy zawiera:
+model rozmieszczenia
+realizacjê przypadków u¿ycia
+klasy projektowe
+rozmieszczenia komponentów
+podsystemy
+
+X1011
+55. Cechy i za³o¿enia procesu testowania:
+powtarzalne
+tylko poprawne dane
+nie wiadomo, kiedy skoñczy
+prowadzone przez osobê trzeci¹ (nie autora)
+
+X1111
+56. Wzorzec projektowy:
+jest przepisem na rozwi¹zanie typowego problemu
+stosuje siê na etapie implementacji
+to np. proxy
+mo¿e byæ kreacyjny
+
+X0111
+57. Implementacja oprogramowania:
+obejmuje dwa podprocesy
+efektem konstrukcji jest kod Ÿród³owy
+efektem integracji jest tzw. przyrost
+obejmuje testowanie integracyjne
+
+X1000
+58. Jakie testowanie jest podstaw¹ weryfikacji oprogramowania:
+akceptacyjne
+testowanie niezawodnoœci
+testowanie œcie¿ek programu
+testowanie interfejsu u¿ytkownika
+
+X1111
+59. Do podstawowych praktyk XP nale¿¹:
+ci¹g³e testowanie
+programowanie parami
+refaktoryzacja (przerabianie kodu)
+zarz¹dzanie ryzykiem
+
+X1110
+60. Mechanizm analizy:
+Jest wzorcem rozwi¹zania problemu
+Jest niezwi¹zany z dziedzin¹ problemu
+Uwzglêdnia aspekt technologiczny
+jest nim np. logowanie
+
+X1010
+61. Jak powinna wygl¹daæ zale¿noœæ pomiêdzy stabilnoœci¹, abstrakcyjnoœci¹ podsystemu?
+podsystem powinien byæ równie stabilny jak i abstrakcyjny
+podsystem powinien byæ równie niestabilny jak i abstrakcyjny
+jeœli podsystem nie posiada zale¿noœci wychodz¹cych, to najlepiej aby wszystkie klasy podsystemu by³y abstrakcyjne
+jeœli podsystem nie posiada zale¿noœci wychodz¹cych, to najlepiej aby wszystkie klasy podsystemu nie by³y abstrakcyjne
+
+X0010
+62. O czym mówi zasada zbiorowego wielokrotnego u¿ycia:
+interfejsy powinny byæ tworzone tak, aby nadawa³y siê do wielokrotnego u¿ytku przez ró¿nych u¿ytkowników
+klasy podsystemu powinny byæ zbiorczo zamkniête dla jednego typu operacji
+klasy, które s¹ wielokrotnie razem u¿ywane powinny trafiæ do jednego podsystemu
+w diagramie sekwencji nale¿y ograniczy iloœæ powtarzalnych operacji na rzecz stosowania pêtli
+
+X1001
+63. Testowanie akceptacyjne polega na:
+weryfikacji czy system dzia³a poprawnie
+weryfikuje czy interfejsy s¹ poprawnie zdefiniowane
+ponowieniu wczeœniejszy testów
+walidacji czy system spe³nia potrzeby u¿ytkownika
+
+X1000
+64. Nieprawdziwymi stwierdzeniami na temat wzorca s¹:
+wzorzec opisuje problem, który raz pojawi³ siê w okreœlonej dziedzinie.
+wzorzec prezentuje rozwi¹zanie w sposób abstrakcyjny
+wzorzec ukrywa szczegó³y implementacyjne
+wzorzec programowania dotyczy rozwi¹zañ dla dowolnego jêzyka
+
+X0001
+65. Celem diagramów stanów jest:
+znalezienie cykli przejœæ stanów obiektu i ich usuniêcie
+utworzenie sekwencji wiadomoœci otrzymywanych przez instancjê klasy
+modelowanie historii ¿ycia klasy obiektu klasy
+opis reakcji instancji na zdarzenia
+
+X00101
+66. Przypadek u¿ycia:
+jest to us³uga w systemie niezale¿na od aktorów
+podobnie jak klasa – mo¿e mieæ swoj¹ instancjê
+jest to konkretna sekwencja akcji aktora i konkretna sekwencja akcji systemu
+rozpoczyna siê od akcji systemu
+jest wykonywany przez system
+
+X1111
+67. Jêzyk OCL jest jêzykiem:
+formalnym
+typizowanym
+pozwala zapisywaæ 3 rodzaje ograniczeñ
+powala opisaæ precyzyjniej semantykê diagramu klas
+
+X0111
+68. W procesie projektowania oprogramowania u¿ywa siê:
+stereotypów klas wynikaj¹cych z platformy sprzêtowej
+klas projektowych "control", "entity" i "boundary"
+mechanizmów generycznych
+wzorców projektowych
+
+X10110
+69. Celem projektowania klasy jest okreœlenie:
+widocznoœci atrybutów i operacji
+zdarzeñ, które klasa obs³uguje
+operacji, które klasa wykonuje
+interfejsu klasy
+komunikacji z innymi klasami
+
+X1100
+70. Jakie jest oznaczenie i rola klas domenowych (entity) oraz klas steruj¹cych (control) w UML?
+klasy domenowe  - dla modelu relacyjnego; model danych, projekt bazy danych
+klasy steruj¹ce - decyzje powinny uwzglêdniaæ rozproszenie aplikacji, wymagania wydajnoœciowe, obs³uga transakcji
+klasy domenowe  - decyzje powinny uwzglêdniaæ rozproszenie aplikacji, wymagania wydajnoœciowe, obs³uga transakcji
+klasy steruj¹ce - dla modelu relacyjnego; model danych, projekt bazy danych
+
+X1110
+71. Wzorzec projektowy:
+ma nazwê, problem i sposób rozwi¹zania
+umo¿liwia wielokrotne wykorzystanie rozwi¹zania
+dotyczy pewnego poziomu abstrakcji problemu
+wykorzystywany w fazie analizy
+
+X1101
+72. Czy poprawne sk³adniowo s¹ wyra¿enia (flota jest kolekcj¹):
+A. flota -> select (s: Samochod  | s.pojemsiln = 1300)
+B. flota -> select (s			 | s.pojemsiln = 1300)
+C. flota -> select (			   s.pojemsiln = 1300)
+D. flota -> select (s 			 |   pojemsiln = 1300)
+
+X1100
+73. Czy poprawne s¹ wyra¿enia (osoba jest kolekcj¹; o : osoba)?
+Osoba -> select(o 		 | o.wiek =  18)
+Osoba -> select(o: Osoba | o.wiek =  18)
+Osoba -> select(		     wiek == 18)
+Osoba -> select(	       o.wiek == 18)
+
+X11110
+74. Które zapisy inwariantów sa poprawne sk³adniowo?
+context 	OSOBA inv: self.wiek >= 18
+context 	OSOBA inv: 		wiek >= 18
+context o: 	OSOBA inv: self.wiek >= 18
+context o: 	OSOBA inv:    o.wiek >= 18
+context 	OSOBA inv:    o.wiek >= 18
+
+X110111
+75. Przyk³adowymi elementami konfiguracji s¹:
+kod wykonywalny
+dokumentacja projektowa
+dokumentacja u¿ytkownika
+kod Ÿród³owy programu
+dokumentacja produktu programowego
+standardy, procedury, instrukcje
+
+X1111
+76. Przyrost kodu to:
+efekt wykonywania iteracji
+wykonywalna wersja systemu lub jego czêœci
+przetestowany przypadek u¿ycia
+rozbudowany kod Ÿród³owy
+
+X0111
+77. W trakcie przygotowania i realizacji przedsiêwziêcia powstaj¹ plany:
+jakoœci
+kosztów
+przegl¹dów
+wytwarzania oprogramowania
+
+X10000
+78. Jakoœæ wewnêtrzna jest opisywana przez w³asnoœci produktu:
+testowalnoœæ
+³atwoœæ u¿ytkowania
+niezawodnoœæ
+ergonomiê
+zdolnoœæ funkcjonaln¹
+
+X1011
+79. Model cyklu ¿ycia:
+opisuje procesy wykonywane podczas ¿ycia oprogramowania:
+pozwala na okreœlenie u¿ytecznoœci procesów powstawania oprogramowania
+wprowadza czêœciowy porz¹dek („kolejnoœæ”) w wykonywanych procesach
+definiuje kryteria rozpoczêcia i zakoñczenia procesów
+
+X1111
+80. Jaki rodzaj widzialnoœci mo¿e byæ zdefiniowany dla elementów klasy:
++ publiczne
+- chronione
+~ pakietowe
+# prywatne
+
+X0101
+81. Model statyczny systemu:
+jest opisywany przez diagram stanów
+jest reprezentowany m. in. przez diagram klas
+opisuje dane systemu
+opisuje architekturê systemu
+
+X1110
+82. W procesie In¿ynierii wymagañ: 
+definiuje siê potrzeby udzia³owców
+dokonuje siê odkrywania wymagañ
+wytwarza siê wizjê systemu
+wytwarza siê  model biznesowy

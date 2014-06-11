@@ -2,7 +2,10 @@
 <resources>
 
     <string name="app_name">Gra PWr</string>
-    <string name="hello_world">Hello world!</string>
-    <string name="action_settings">Settings</string>
+    <string name="action_settings">Ustawienia</string>
+    <string name="blank">blank</string>
+    <string name="choose_data">Wybierz przedmiot:</string>
+    <string name="choose_repeating">Wybierz ilość powtórzeń każdego pytania:</string>
+    <string name="choose_repeating_wrong_answer">Wybierz ilość powtórzeń w przypadku złej odpowiedzi:</string>
 
 </resources>
