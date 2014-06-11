@@ -9,8 +9,44 @@
     tools:context="pl.grapwr.FinishActivity$PlaceholderFragment" >
 
     <TextView
+        android:id="@+id/textViewFinish1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:text="@string/game_score"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textViewFinish2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewFinish1"
+        android:layout_below="@+id/textViewFinish1"
+        android:layout_marginTop="12dp"
+        android:text="@string/good_to_bad"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <TextView
+        android:id="@+id/textViewFinish3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/textViewFinish2"
+        android:layout_alignBottom="@+id/textViewFinish2"
+        android:layout_marginLeft="4dp"
+        android:layout_toRightOf="@+id/textViewFinish2"
+        android:text="@string/blank"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/buttonFinish1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textViewFinish2"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_below="@+id/textViewFinish2"
+        android:layout_marginTop="12dp"
+        android:text="@string/new_game" />
 
 </RelativeLayout>
