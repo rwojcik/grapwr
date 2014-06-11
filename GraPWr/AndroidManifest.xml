@@ -7,7 +7,7 @@
     <uses-sdk
         android:minSdkVersion="16"
         android:targetSdkVersion="19" />
-    
+
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.WAKE_LOCK" />
@@ -30,6 +30,10 @@
         <activity
             android:name="pl.grapwr.activity.GameActivity"
             android:label="@string/title_activity_game" >
+        </activity>
+        <activity
+            android:name="pl.grapwr.activity.FinishActivity"
+            android:label="@string/title_activity_finish" >
         </activity>
     </application>
 
