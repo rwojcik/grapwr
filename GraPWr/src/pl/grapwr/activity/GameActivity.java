@@ -24,6 +24,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class GameActivity extends Activity
 {
@@ -78,9 +79,9 @@ public class GameActivity extends Activity
 		textViewGame1 = (TextView) findViewById(id.textViewGame1);
 		textViewGame2 = (TextView) findViewById(id.textViewGame2);
 		progressBarGame1 = (ProgressBar) findViewById(id.progressBarGame1);
-		progressBarGame1.getProgressDrawable().setColorFilter(Color.GREEN, Mode.SRC_IN);
+		progressBarGame1.getProgressDrawable().setColorFilter(Color.GREEN, Mode.CLEAR);
 		progressBarGame2 = (ProgressBar) findViewById(id.progressBarGame2);
-		progressBarGame2.getProgressDrawable().setColorFilter(Color.GREEN, Mode.SRC_IN);
+		progressBarGame2.getProgressDrawable().setColorFilter(Color.GREEN, Mode.CLEAR);
 		progressBarGame2.setMax(questions.size());
 
 		checkBoxes = new CheckBox[] { (CheckBox) findViewById(id.checkBoxGame1), (CheckBox) findViewById(id.checkBoxGame2),
@@ -179,6 +180,10 @@ public class GameActivity extends Activity
 			textViewGame2.setText(R.string.wrong_answer);
 			badAnswers++;
 			currentQuestion.wrongAnswer();
+		}
+		
+		if(questions.isEmpty()){
+		    Toast.makeText(this.getApplicationContext(), "Koniec nauki", Toast.LENGTH_LONG).show();
 		}
 
 		progressBarGame1.setMax(badAnswers + goodAnswers);
