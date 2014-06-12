@@ -1,0 +1,11 @@
+v. 0.0.1 - Initial release
+
+v. 0.0.2
++ Dodano obsługę obracania ekranu
++ Poprawiono obsługę pytań (pierwsze było pomijane)
+
+TODO LIST
+- Przejście na pytania przechowywane w bazie danych
+- Dodanie konwersji z pliku tekstowego do bazy danych
+- Dodanie opcji off-line
+- Dodanie możliwości obsługi obrazków (jako załącznik lub natywnie, lub oba)
