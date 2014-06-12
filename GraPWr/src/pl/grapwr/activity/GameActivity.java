@@ -5,7 +5,6 @@ import java.util.Collections;
 import java.util.Random;
 
 import pl.grapwr.R;
-import pl.grapwr.R.id;
 import pl.grapwr.data.Answer;
 import pl.grapwr.data.Question;
 import android.app.Activity;
@@ -33,6 +32,7 @@ public class GameActivity extends Activity
 	private PlaceholderFragment fragment;
 	private static final String TAG = "GameActivity";
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{
@@ -41,7 +41,7 @@ public class GameActivity extends Activity
 
 		if (savedInstanceState == null)
 		{
-			Log.d(TAG, "savedInstanceState == null");
+//			Log.d(TAG, "savedInstanceState == null");
 
 			fragment = (PlaceholderFragment) getFragmentManager().findFragmentById(R.id.container);
 
@@ -55,7 +55,7 @@ public class GameActivity extends Activity
 			try
 			{
 				RotationHandler.createInstance((ArrayList<Question>) getIntent().getSerializableExtra("questions"));
-				Log.d(TAG, "questions size: " + RotationHandler.getInstance().questions.size());
+				Log.i(TAG, "questions size: " + RotationHandler.getInstance().questions.size());
 
 			}
 			catch (Exception e)
@@ -65,7 +65,7 @@ public class GameActivity extends Activity
 		}
 		else
 		{
-			Log.d(TAG, "savedInstanceState != null");
+//			Log.d(TAG, "savedInstanceState != null");
 			fragment = (PlaceholderFragment) getFragmentManager().findFragmentByTag("PlaceHolder");
 		}
 
@@ -158,17 +158,17 @@ public class GameActivity extends Activity
 
 		private void initWidgets()
 		{
-			textViewGame1 = (TextView) rootView.findViewById(id.textViewGame1);
-			textViewGame2 = (TextView) rootView.findViewById(id.textViewGame2);
-			progressBarGame1 = (ProgressBar) rootView.findViewById(id.progressBarGame1);
-			progressBarGame2 = (ProgressBar) rootView.findViewById(id.progressBarGame2);
+			textViewGame1 = (TextView) rootView.findViewById(R.id.textViewGame1);
+			textViewGame2 = (TextView) rootView.findViewById(R.id.textViewGame2);
+			progressBarGame1 = (ProgressBar) rootView.findViewById(R.id.progressBarGame1);
+			progressBarGame2 = (ProgressBar) rootView.findViewById(R.id.progressBarGame2);
 			progressBarGame2.setMax(RotationHandler.getInstance().completitionMaxProgress);
 
-			checkBoxes = new CheckBox[] { (CheckBox) rootView.findViewById(id.checkBoxGame1), (CheckBox) rootView.findViewById(id.checkBoxGame2),
-					(CheckBox) rootView.findViewById(id.checkBoxGame3), (CheckBox) rootView.findViewById(id.checkBoxGame4),
-					(CheckBox) rootView.findViewById(id.checkBoxGame5), (CheckBox) rootView.findViewById(id.checkBoxGame6),
-					(CheckBox) rootView.findViewById(id.checkBoxGame7), (CheckBox) rootView.findViewById(id.checkBoxGame8) };
-			buttonGame1 = (Button) rootView.findViewById(id.buttonGame1);
+			checkBoxes = new CheckBox[] { (CheckBox) rootView.findViewById(R.id.checkBoxGame1), (CheckBox) rootView.findViewById(R.id.checkBoxGame2),
+					(CheckBox) rootView.findViewById(R.id.checkBoxGame3), (CheckBox) rootView.findViewById(R.id.checkBoxGame4),
+					(CheckBox) rootView.findViewById(R.id.checkBoxGame5), (CheckBox) rootView.findViewById(R.id.checkBoxGame6),
+					(CheckBox) rootView.findViewById(R.id.checkBoxGame7), (CheckBox) rootView.findViewById(R.id.checkBoxGame8) };
+			buttonGame1 = (Button) rootView.findViewById(R.id.buttonGame1);
 
 			if (buttonGame1 != null)
 				buttonGame1.setOnClickListener(new OnClickListener() {

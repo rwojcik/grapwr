@@ -1,0 +1,8 @@
+﻿<bases>
+	<base>
+		<name>PIO W</name>
+		<location>https://raw.githubusercontent.com/rwojcik/grapwr/master/Pytania/PIO.txt</location>
+		<version>1</version>
+		<capacity>81</capacity>
+	</base>
+</bases>
