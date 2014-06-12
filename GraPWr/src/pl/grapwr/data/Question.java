@@ -3,9 +3,6 @@ package pl.grapwr.data;
 import java.io.Serializable;
 import java.util.ArrayList;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 public class Question implements Serializable {
 	private static final long serialVersionUID = 1L;
 	private ArrayList<Answer> answers;
