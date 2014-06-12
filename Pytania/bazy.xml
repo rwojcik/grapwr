@@ -1,5 +1,4 @@
-﻿ <?xml version="1.0" encoding="UTF-8"?>
-<bases>
+﻿<bases>
 	<base>
 		<name>PIO W</capacity>
 		<location>https://raw.githubusercontent.com/rwojcik/grapwr/master/Pytania/PIO.txt</location>
