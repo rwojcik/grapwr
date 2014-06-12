@@ -1,15 +1,27 @@
 package pl.grapwr.activity;
 
 import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.lang.reflect.Field;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.HashMap;
+
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 import pl.grapwr.R;
 import pl.grapwr.R.id;
 import pl.grapwr.appsettings.Settings;
 import pl.grapwr.data.Answer;
+import pl.grapwr.data.Base;
 import pl.grapwr.data.Question;
 import android.app.Activity;
 import android.app.Fragment;
@@ -20,6 +32,8 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -52,6 +66,7 @@ public class MainActivity extends Activity
 		{
 			getFragmentManager().beginTransaction().add(R.id.container, new PlaceholderFragment()).commit();
 		}
+
 	}
 
 	@Override
@@ -159,25 +174,29 @@ public class MainActivity extends Activity
 		}
 	}
 
-	// @Override
-	// public boolean onCreateOptionsMenu(Menu menu) {
-	//
-	// // Inflate the menu; this adds items to the action bar if it is present.
-	// getMenuInflater().inflate(R.menu.main, menu);
-	// return true;
-	// }
-	//
-	// @Override
-	// public boolean onOptionsItemSelected(MenuItem item) {
-	// // Handle action bar item clicks here. The action bar will
-	// // automatically handle clicks on the Home/Up button, so long
-	// // as you specify a parent activity in AndroidManifest.xml.
-	// int id = item.getItemId();
-	// if (id == R.id.action_settings) {
-	// return true;
-	// }
-	// return super.onOptionsItemSelected(item);
-	// }
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu)
+	{
+
+		// Inflate the menu; this adds items to the action bar if it is present.
+		getMenuInflater().inflate(R.menu.main, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item)
+	{
+		// Handle action bar item clicks here. The action bar will
+		// automatically handle clicks on the Home/Up button, so long
+		// as you specify a parent activity in AndroidManifest.xml.
+		int id = item.getItemId();
+		if (id == R.id.action_settings)
+		{
+			downloadXML(this, Settings.BASES_LOCATION);
+			return true;
+		}
+		return super.onOptionsItemSelected(item);
+	}
 
 	public static class PlaceholderFragment extends Fragment
 	{
@@ -201,7 +220,7 @@ public class MainActivity extends Activity
 			private ProgressDialog progressDialog;
 			private String location;
 			private Context context;
-			private String TAG = "downloadBase";
+			private String TAG = "MainActivity.downloadBase";
 			private int answerTimes = 3;
 			private int answerTimesFail = 3;
 
@@ -278,7 +297,7 @@ public class MainActivity extends Activity
 				{
 					Intent i = new Intent(context, GameActivity.class);
 					i.putExtra("questions", result);
-					Log.d(TAG, "result size: " + result.size());
+					// Log.d(TAG, "result size: " + result.size());
 					context.startActivity(i);
 				}
 				catch (Exception e)
@@ -292,6 +311,117 @@ public class MainActivity extends Activity
 		}
 
 		return new DownloadingTask(context, answerTimes, answerTimesFail).execute(location);
+	}
+
+	static AsyncTask<String, Integer, HashMap<String, Base>> downloadXML(Context context, String location)
+	{
+		class DownloadingTask extends AsyncTask<String, Integer, HashMap<String, Base>>
+		{
+			private String location;
+			private Context context;
+			private String TAG = "MainActivity.downloadXML";
+
+			public DownloadingTask(Context context, String location)
+			{
+				this.context = context;
+				this.location = location;
+			}
+
+			@Override
+			protected void onPreExecute()
+			{
+				super.onPreExecute();
+				Thread.currentThread().setName("DownloadingTask");
+			}
+
+			@Override
+			protected HashMap<String, Base> doInBackground(String... params)
+			{
+				HashMap<String, Base> locations = new HashMap<String, Base>(2);
+				InputStream stream = null;
+				try
+				{
+					// URL url = new URL(location);
+					// URI uri = new URI(location);
+					// File xmlFile = new File(uri);
+					// BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
+					// String inputLine;
+
+					URL url = new URL(location);
+					stream = url.openStream();
+					// Document doc = docBuilder.parse(stream);
+
+					DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
+					DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
+					Document doc = dBuilder.parse(stream);
+
+					// optional, but recommended
+					// read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
+					doc.getDocumentElement().normalize();
+
+					// Log.d(TAG, "Root element :" + doc.getDocumentElement().getNodeName());
+
+					NodeList nList = doc.getElementsByTagName("base");
+
+					// Log.d(TAG, "----------------------------");
+
+					for (int i = 0; i < nList.getLength(); i++)
+					{
+
+						Node nNode = nList.item(i);
+
+						// Log.d(TAG, "\nCurrent Element :" + nNode.getNodeName());
+
+						if (nNode.getNodeType() == Node.ELEMENT_NODE)
+						{
+
+							Element eElement = (Element) nNode;
+							String name = eElement.getElementsByTagName("name").item(0).getTextContent();
+							String httpLocation = eElement.getElementsByTagName("location").item(0).getTextContent();
+							int version = Integer.parseInt(eElement.getElementsByTagName("version").item(0).getTextContent());
+							int questions = Integer.parseInt(eElement.getElementsByTagName("capacity").item(0).getTextContent());
+
+							locations.put(name, new Base(httpLocation, questions, version));
+
+							// Log.d(TAG, "Base name : " + eElement.getElementsByTagName("name").item(0).getTextContent());
+							// Log.d(TAG, "Base location : " + eElement.getElementsByTagName("location").item(0).getTextContent());
+							// Log.d(TAG, "Base version : " + eElement.getElementsByTagName("version").item(0).getTextContent());
+							// Log.d(TAG, "Base capacity : " + eElement.getElementsByTagName("capacity").item(0).getTextContent());
+
+						}
+					}
+
+				}
+				catch (Exception e)
+				{
+					Log.e(TAG, "doInBackground", e);
+				}
+				try
+				{
+					stream.close();
+				}
+				catch (IOException e)
+				{
+					Log.e(TAG, "doInBackground", e);
+				}
+
+				return locations;
+			}
+
+			@Override
+			protected void onPostExecute(HashMap<String, Base> result)
+			{
+				super.onPostExecute(result);
+
+				Log.d(TAG, "onPostExecute, result contains");
+
+				Toast.makeText(context, String.format((String) context.getText(R.string.updates_downloaded), result.keySet().size()), Toast.LENGTH_LONG).show();
+				
+			}
+
+		}
+
+		return new DownloadingTask(context, location).execute();
 	}
 
 }
