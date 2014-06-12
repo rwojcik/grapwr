@@ -33,6 +33,7 @@ public class GameActivity extends Activity
 	private PlaceholderFragment fragment;
 	private static final String TAG = "GameActivity";
 
+	@SuppressWarnings("unchecked")
 	@Override
 	protected void onCreate(Bundle savedInstanceState)
 	{

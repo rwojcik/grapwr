@@ -13,18 +13,21 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
 
-public class FinishActivity extends Activity {
+public class FinishActivity extends Activity
+{
 	private int goodAnswers = 0;
 	private int badAnswers = 0;
 	private TextView textViewFinish3;
 	private Button buttonFinish1;
 
 	@Override
-	protected void onCreate(Bundle savedInstanceState) {
+	protected void onCreate(Bundle savedInstanceState)
+	{
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_finish);
 
-		if (savedInstanceState == null) {
+		if (savedInstanceState == null)
+		{
 			getFragmentManager().beginTransaction().add(R.id.container, new PlaceholderFragment()).commit();
 		}
 		goodAnswers = getIntent().getIntExtra("goodAnswers", goodAnswers);
@@ -32,19 +35,22 @@ public class FinishActivity extends Activity {
 	}
 
 	@Override
-	protected void onStart() {
+	protected void onStart()
+	{
 		super.onStart();
 		initWidgets();
 	}
 
-	private void initWidgets() {
+	private void initWidgets()
+	{
 		textViewFinish3 = (TextView) findViewById(id.textViewFinish3);
 		textViewFinish3.setText(goodAnswers + "/" + badAnswers);
 		buttonFinish1 = (Button) findViewById(id.buttonFinish1);
 		buttonFinish1.setOnClickListener(new OnClickListener() {
 
 			@Override
-			public void onClick(View v) {
+			public void onClick(View v)
+			{
 				newGame();
 			}
 
@@ -52,7 +58,8 @@ public class FinishActivity extends Activity {
 
 	}
 
-	private void newGame() {
+	private void newGame()
+	{
 
 		Intent i = new Intent(this, MainActivity.class);
 		i.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP); // czyszczenie stosu -> brak
@@ -83,13 +90,16 @@ public class FinishActivity extends Activity {
 	/**
 	 * A placeholder fragment containing a simple view.
 	 */
-	public static class PlaceholderFragment extends Fragment {
+	public static class PlaceholderFragment extends Fragment
+	{
 
-		public PlaceholderFragment() {
+		public PlaceholderFragment()
+		{
 		}
 
 		@Override
-		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState)
+		{
 			View rootView = inflater.inflate(R.layout.fragment_finish, container, false);
 			return rootView;
 		}
