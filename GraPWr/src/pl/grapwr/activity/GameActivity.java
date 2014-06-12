@@ -2,6 +2,8 @@ package pl.grapwr.activity;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Random;
 
 import pl.grapwr.R;
@@ -23,6 +25,8 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.LinearLayout;
+import android.widget.LinearLayout.LayoutParams;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -115,7 +119,7 @@ public class GameActivity extends Activity
 		private TextView textViewGame2;
 		private ProgressBar progressBarGame1;
 		private ProgressBar progressBarGame2;
-		private CheckBox[] checkBoxes;
+		private ArrayList<CheckBox> checkBoxes;
 		private Button buttonGame1;
 		private Question currentQuestion;
 		private ArrayList<Answer> answers;
@@ -144,14 +148,14 @@ public class GameActivity extends Activity
 		public void onStop()
 		{
 			Log.d(TAG + ".Fragment.Rotation", "onStop");
-
+			
 			RotationHandler.getInstance().setRotated();
-
-			for (int i = 0; i < 8; i++)
-			{
-				if (checkBoxes[i].isChecked())
-					RotationHandler.getInstance().checkAnswer(i);
-			}
+			
+			Iterator<CheckBox> it = checkBoxes.iterator();
+			int itCounter = 0;
+			
+			while(it.hasNext() && RotationHandler.getInstance().lastCheckedAnswers.length > itCounter)
+				RotationHandler.getInstance().lastCheckedAnswers[itCounter++] = it.next().isChecked(); // Nasty oneliner :)
 
 			super.onStop();
 		}
@@ -163,11 +167,9 @@ public class GameActivity extends Activity
 			progressBarGame1 = (ProgressBar) rootView.findViewById(R.id.progressBarGame1);
 			progressBarGame2 = (ProgressBar) rootView.findViewById(R.id.progressBarGame2);
 			progressBarGame2.setMax(RotationHandler.getInstance().completitionMaxProgress);
+			
+			checkBoxes = new ArrayList<>();
 
-			checkBoxes = new CheckBox[] { (CheckBox) rootView.findViewById(R.id.checkBoxGame1), (CheckBox) rootView.findViewById(R.id.checkBoxGame2),
-					(CheckBox) rootView.findViewById(R.id.checkBoxGame3), (CheckBox) rootView.findViewById(R.id.checkBoxGame4),
-					(CheckBox) rootView.findViewById(R.id.checkBoxGame5), (CheckBox) rootView.findViewById(R.id.checkBoxGame6),
-					(CheckBox) rootView.findViewById(R.id.checkBoxGame7), (CheckBox) rootView.findViewById(R.id.checkBoxGame8) };
 			buttonGame1 = (Button) rootView.findViewById(R.id.buttonGame1);
 
 			if (buttonGame1 != null)
@@ -210,33 +212,31 @@ public class GameActivity extends Activity
 				answers = currentQuestion.getAnswers();
 				Collections.shuffle(answers, random);
 				rh.setAnswers(answers);
-				buttonGame1.setText(R.string.check_answer);
 			}
 
+			buttonGame1.setText(R.string.check_answer);
 			answered = false;
 			textViewGame1.setText(currentQuestion.getText());
 			textViewGame2.setText("");
-
-			int activeCheckBoxes = answers.size();
-
-			for (int i = 8; i > activeCheckBoxes; i--)
+			
+			LinearLayout checkBoxesContainer = (LinearLayout) rootView.findViewById(R.id.checkboxesContainerGame1);
+			checkBoxesContainer.removeAllViews();
+			
+			while(checkBoxes.size() < answers.size())
+				checkBoxes.add(null);
+			
+			for(int i =0; i < answers.size(); i++)
 			{
-				CheckBox checkBox = checkBoxes[i - 1];
-				checkBox.setChecked(false);
-				checkBox.setVisibility(View.INVISIBLE);
-
-			}
-
-			for (int i = 0; i < activeCheckBoxes; i++)
-			{
-
-				CheckBox checkBox = checkBoxes[i];
+				CheckBox checkBox = new CheckBox(this.getActivity());
+				checkBox.setLayoutParams(new LayoutParams(LinearLayout.LayoutParams.MATCH_PARENT,LinearLayout.LayoutParams.WRAP_CONTENT));
 				checkBox.setChecked(rh.wasAnswerChecked(i));
 				checkBox.setVisibility(View.VISIBLE);
 				((TextView) checkBox).setTextColor(Color.BLACK);
 				checkBox.setClickable(true);
 				checkBox.setText((CharSequence) answers.get(i).getAnswer());
 				checkBox.setTypeface(null, Typeface.NORMAL);
+				checkBoxes.set(i,checkBox);
+				checkBoxesContainer.addView(checkBox);
 			}
 
 			if (rh.hasRotated() && rh.hasBeenChecked)
@@ -247,17 +247,22 @@ public class GameActivity extends Activity
 
 		private void checkQuestion()
 		{
-			int activeCheckBoxes = answers.size();
+			RotationHandler rh = RotationHandler.getInstance();
+			
 			boolean correct = true;
-
-			for (int i = 1; i <= activeCheckBoxes; i++)
+			
+			Iterator<CheckBox> itCheckBox = checkBoxes.iterator();
+			Iterator<Answer> itAnswer = answers.iterator();
+			
+			while(itCheckBox.hasNext() && itAnswer.hasNext())
 			{
-				Answer tempAnswer = answers.get(i - 1);
-				CheckBox checkBox = checkBoxes[i - 1];
+				Answer tempAnswer = itAnswer.next();
+				CheckBox checkBox = itCheckBox.next();
+				
 				checkBox.setClickable(false);
 				if (tempAnswer.isCorrect())
 					checkBox.setTypeface(null, Typeface.BOLD);
-
+				
 				if (checkBox.isChecked() ^ tempAnswer.isCorrect())
 				{
 					((TextView) checkBox).setTextColor(Color.RED);
@@ -267,46 +272,45 @@ public class GameActivity extends Activity
 				{
 					((TextView) checkBox).setTextColor(0xFF00E300);
 				}
-
 			}
 
-			if (!RotationHandler.getInstance().hasRotated())
+			if (!rh.hasRotated())
 			{
 				if (correct)
 				{
 					textViewGame2.setText(R.string.good_answer);
-					RotationHandler.getInstance().increaseGoodAnswers();
+					rh.increaseGoodAnswers();
 					currentQuestion.goodAnswer();
 					if (currentQuestion.getRemainAnswers() < 1)
 					{
-						progressBarGame2.setProgress(++RotationHandler.getInstance().completitionProgress);
-						RotationHandler.getInstance().questions.remove(currentQuestion);
+						progressBarGame2.setProgress(++rh.completitionProgress);
+						rh.questions.remove(currentQuestion);
 					}
 
 				}
 				else
 				{
 					textViewGame2.setText(R.string.wrong_answer);
-					RotationHandler.getInstance().increaseBadAnswers();
+					rh.increaseBadAnswers();
 					currentQuestion.wrongAnswer();
 				}
 			}
 
-			if (RotationHandler.getInstance().questions.isEmpty())
+			if (rh.questions.isEmpty())
 			{
 				Toast.makeText(this.getActivity(), "Koniec nauki", Toast.LENGTH_LONG).show();
 
 				Intent i = new Intent(this.getActivity(), FinishActivity.class);
-				i.putExtra("goodAnswers", RotationHandler.getInstance().getGoodAnswers());
-				i.putExtra("badAnswers", RotationHandler.getInstance().getBadAnswers());
+				i.putExtra("goodAnswers", rh.getGoodAnswers());
+				i.putExtra("badAnswers", rh.getBadAnswers());
 				this.startActivity(i);
 			}
 
-			progressBarGame1.setMax((RotationHandler.getInstance().getBadAnswers() + RotationHandler.getInstance().getGoodAnswers()) * 100);
-			if (RotationHandler.getInstance().getBadAnswers() == 0)
+			progressBarGame1.setMax(rh.getAllAnswers() * 100);
+			if (rh.getBadAnswers() == 0)
 				progressBarGame1.setProgress(progressBarGame1.getMax());
 			else
-				progressBarGame1.setProgress(RotationHandler.getInstance().getGoodAnswers() * 100 / RotationHandler.getInstance().getBadAnswers() * 100);
+				progressBarGame1.setProgress(progressBarGame1.getMax() - rh.getBadAnswers() * 100);
 
 			buttonGame1.setText(R.string.next_question);
 			answered = true;
@@ -322,8 +326,7 @@ public class GameActivity extends Activity
 		private boolean[] lastCheckedAnswers;
 		private int lastQuestion;
 		private boolean rotation;
-		private int goodAnswers;
-		private int badAnswers;
+		private int goodAnswers, badAnswers;
 		private int completitionProgress, completitionMaxProgress;
 		private boolean hasBeenChecked;
 
@@ -430,6 +433,11 @@ public class GameActivity extends Activity
 		public int getBadAnswers()
 		{
 			return badAnswers;
+		}
+		
+		public int getAllAnswers()
+		{
+			return goodAnswers + badAnswers;
 		}
 
 	}
