@@ -23,6 +23,7 @@ import pl.grapwr.appsettings.Settings;
 import pl.grapwr.data.Answer;
 import pl.grapwr.data.Base;
 import pl.grapwr.data.Question;
+import pl.grapwr.data.QuestionBankLoader;
 import android.app.Activity;
 import android.app.Fragment;
 import android.app.ProgressDialog;
@@ -165,7 +166,7 @@ public class MainActivity extends Activity
 			String location = (String) locationField.get(String.class);
 			// Log.d(TAG, "answerTimes: " + answerTimes + ", answerTimesFail: "
 			// + answerTimesFail);
-			downloadBase(this, location, answerTimes, answerTimesFail);
+			QuestionBankLoader.loadBase(this, answerTimes, answerTimesFail);
 
 		}
 		catch (Exception e)
@@ -192,7 +193,7 @@ public class MainActivity extends Activity
 		int id = item.getItemId();
 		if (id == R.id.action_settings)
 		{
-			downloadXML(this, Settings.BASES_LOCATION);
+			//downloadXML(this, Settings.BASES_LOCATION);
 			return true;
 		}
 		return super.onOptionsItemSelected(item);
@@ -211,217 +212,6 @@ public class MainActivity extends Activity
 			View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 			return rootView;
 		}
-	}
-
-	static AsyncTask<String, Integer, ArrayList<Question>> downloadBase(Context context, String location, int answerTimes, int answerTimesFail)
-	{
-		class DownloadingTask extends AsyncTask<String, Integer, ArrayList<Question>>
-		{
-			private ProgressDialog progressDialog;
-			private String location;
-			private Context context;
-			private String TAG = "MainActivity.downloadBase";
-			private int answerTimes = 3;
-			private int answerTimesFail = 3;
-
-			public DownloadingTask(Context context, int answerTimes, int answerTimesFail)
-			{
-				this.context = context;
-				this.answerTimes = answerTimes;
-				this.answerTimesFail = answerTimesFail;
-			}
-
-			@Override
-			protected void onPreExecute()
-			{
-				super.onPreExecute();
-				Thread.currentThread().setName("SearchingTask");
-				progressDialog = new ProgressDialog(context);
-				progressDialog.setMessage(context.getText(R.string.downloading));
-				progressDialog.setTitle(context.getText(R.string.please_wait));
-				progressDialog.show();
-			}
-
-			@Override
-			protected ArrayList<Question> doInBackground(String... params)
-			{
-				location = params[0];
-				ArrayList<Question> questions = new ArrayList<Question>(81);
-
-				try
-				{
-					URL url = new URL(location);
-					BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
-					String inputLine;
-					while ((inputLine = in.readLine()) != null)
-					{
-
-						if (inputLine.length() > 0 && inputLine.charAt(0) == 'X')
-						{
-							Question question = new Question();
-
-							char[] chars = inputLine.toCharArray();
-
-							question.setText(in.readLine());
-							for (int i = 1; i < chars.length; i++)
-							{
-								Answer answer = new Answer();
-								answer.setCorrect(chars[i] == '1');
-								answer.setAnswer(in.readLine());
-								question.addAnswer(answer);
-							}
-							question.setRemainAnswers(answerTimes);
-							question.setAnswerTimesFail(answerTimesFail);
-							questions.add(question);
-						}
-					}
-					in.close();
-				}
-				catch (Exception e)
-				{
-					Log.e(TAG, "AsyncTask.doInBackground", e);
-					Toast.makeText(context, R.string.fail, Toast.LENGTH_LONG).show();
-					this.cancel(true);
-				}
-
-				return questions;
-			}
-
-			@Override
-			protected void onPostExecute(ArrayList<Question> result)
-			{
-				super.onPostExecute(result);
-				progressDialog.dismiss();
-
-				try
-				{
-					Intent i = new Intent(context, GameActivity.class);
-					i.putExtra("questions", result);
-					// Log.d(TAG, "result size: " + result.size());
-					context.startActivity(i);
-				}
-				catch (Exception e)
-				{
-					Toast.makeText(context, R.string.fail, Toast.LENGTH_LONG).show();
-					Log.e(TAG, "AsyncTask.onPostExecute", e);
-					this.cancel(true);
-				}
-			}
-
-		}
-
-		return new DownloadingTask(context, answerTimes, answerTimesFail).execute(location);
-	}
-
-	static AsyncTask<String, Integer, HashMap<String, Base>> downloadXML(Context context, String location)
-	{
-		class DownloadingTask extends AsyncTask<String, Integer, HashMap<String, Base>>
-		{
-			private String location;
-			private Context context;
-			private String TAG = "MainActivity.downloadXML";
-
-			public DownloadingTask(Context context, String location)
-			{
-				this.context = context;
-				this.location = location;
-			}
-
-			@Override
-			protected void onPreExecute()
-			{
-				super.onPreExecute();
-				Thread.currentThread().setName("DownloadingTask");
-			}
-
-			@Override
-			protected HashMap<String, Base> doInBackground(String... params)
-			{
-				HashMap<String, Base> locations = new HashMap<String, Base>(2);
-				InputStream stream = null;
-				try
-				{
-					// URL url = new URL(location);
-					// URI uri = new URI(location);
-					// File xmlFile = new File(uri);
-					// BufferedReader in = new BufferedReader(new InputStreamReader(url.openStream()));
-					// String inputLine;
-
-					URL url = new URL(location);
-					stream = url.openStream();
-					// Document doc = docBuilder.parse(stream);
-
-					DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
-					DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
-					Document doc = dBuilder.parse(stream);
-
-					// optional, but recommended
-					// read this - http://stackoverflow.com/questions/13786607/normalization-in-dom-parsing-with-java-how-does-it-work
-					doc.getDocumentElement().normalize();
-
-					// Log.d(TAG, "Root element :" + doc.getDocumentElement().getNodeName());
-
-					NodeList nList = doc.getElementsByTagName("base");
-
-					// Log.d(TAG, "----------------------------");
-
-					for (int i = 0; i < nList.getLength(); i++)
-					{
-
-						Node nNode = nList.item(i);
-
-						// Log.d(TAG, "\nCurrent Element :" + nNode.getNodeName());
-
-						if (nNode.getNodeType() == Node.ELEMENT_NODE)
-						{
-
-							Element eElement = (Element) nNode;
-							String name = eElement.getElementsByTagName("name").item(0).getTextContent();
-							String httpLocation = eElement.getElementsByTagName("location").item(0).getTextContent();
-							int version = Integer.parseInt(eElement.getElementsByTagName("version").item(0).getTextContent());
-							int questions = Integer.parseInt(eElement.getElementsByTagName("capacity").item(0).getTextContent());
-
-							locations.put(name, new Base(httpLocation, questions, version));
-
-							// Log.d(TAG, "Base name : " + eElement.getElementsByTagName("name").item(0).getTextContent());
-							// Log.d(TAG, "Base location : " + eElement.getElementsByTagName("location").item(0).getTextContent());
-							// Log.d(TAG, "Base version : " + eElement.getElementsByTagName("version").item(0).getTextContent());
-							// Log.d(TAG, "Base capacity : " + eElement.getElementsByTagName("capacity").item(0).getTextContent());
-
-						}
-					}
-
-				}
-				catch (Exception e)
-				{
-					Log.e(TAG, "doInBackground", e);
-				}
-				try
-				{
-					stream.close();
-				}
-				catch (IOException e)
-				{
-					Log.e(TAG, "doInBackground", e);
-				}
-
-				return locations;
-			}
-
-			@Override
-			protected void onPostExecute(HashMap<String, Base> result)
-			{
-				super.onPostExecute(result);
-
-				Log.d(TAG, "onPostExecute, result contains");
-
-				Toast.makeText(context, String.format((String) context.getText(R.string.updates_downloaded), result.keySet().size()), Toast.LENGTH_LONG).show();
-				
-			}
-
-		}
-
-		return new DownloadingTask(context, location).execute();
 	}
 
 }

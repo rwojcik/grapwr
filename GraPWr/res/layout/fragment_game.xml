@@ -21,61 +21,14 @@
             android:text="@string/blank"
             android:textAppearance="?android:attr/textAppearanceMedium" />
 
-        <CheckBox
-            android:id="@+id/checkBoxGame1"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:id="@+id/checkboxesContainerGame1"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@id/textViewGame1"
-            android:text="@string/blank" />
-
-        <CheckBox
-            android:id="@+id/checkBoxGame2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/checkBoxGame1"
-            android:text="@string/blank" />
-
-        <CheckBox
-            android:id="@+id/checkBoxGame3"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/checkBoxGame2"
-            android:text="@string/blank" />
-
-        <CheckBox
-            android:id="@+id/checkBoxGame4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/checkBoxGame3"
-            android:text="@string/blank" />
-
-        <CheckBox
-            android:id="@+id/checkBoxGame5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/checkBoxGame4"
-            android:text="@string/blank" />
-
-        <CheckBox
-            android:id="@+id/checkBoxGame6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/checkBoxGame5"
-            android:text="@string/blank" />
-
-        <CheckBox
-            android:id="@+id/checkBoxGame7"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/checkBoxGame6"
-            android:text="@string/blank" />
-
-        <CheckBox
-            android:id="@+id/checkBoxGame8"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/checkBoxGame7"
-            android:text="@string/blank" />
+            android:layout_below="@+id/textViewGame1"
+            android:orientation="vertical"
+            android:gravity="left" >
+        </LinearLayout>
 
         <Button
             android:id="@+id/buttonGame1"
@@ -83,7 +36,7 @@
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_alignParentRight="true"
-            android:layout_below="@id/checkBoxGame8"
+            android:layout_below="@id/checkboxesContainerGame1"
             android:text="@string/blank" />
 
         <TextView
@@ -136,6 +89,7 @@
             android:layout_marginBottom="3dp"
             android:layout_marginTop="3dp"
             android:progressDrawable="@drawable/game_progressbar" />
+
     </RelativeLayout>
 
 </ScrollView>

@@ -10,7 +10,6 @@ public class Base
 
 	public Base(String httpLocation, int questions, int version)
 	{
-		super();
 //		this.name = name;
 		this.httpLocation = httpLocation;
 		this.questions = questions;
