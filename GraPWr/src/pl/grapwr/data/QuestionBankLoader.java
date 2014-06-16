@@ -35,15 +35,15 @@ public class QuestionBankLoader
 	private QuestionBankLoader()
 	{
 	}
-	
+
 	public static AsyncTask<String, Integer, ArrayList<Question>> loadBase(Context context, int answerTimes, int answerTimesFail)
 	{
 		// TODO SprawdŸ czy jest dostêpny internet jak tak to pobiedz XML i mo¿e aktualizuj bazê
-		
+
 		String location = Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + Settings.PIO_W_LOCATION_OFFLINE;
-		
+
 		Log.d("Path", "Path: " + location);
-		
+
 		return downloadBase(context, Settings.PIO_W_LOCATION, answerTimes, answerTimesFail);
 	}
 
@@ -101,10 +101,13 @@ public class QuestionBankLoader
 							question.setText(in.readLine());
 							for (int i = 1; i < chars.length; i++)
 							{
-								Answer answer = new Answer();
-								answer.setCorrect(chars[i] == '1');
-								answer.setAnswer(in.readLine());
-								question.addAnswer(answer);
+								if (chars[i] == '1' || chars[i] == '0')
+								{
+									Answer answer = new Answer();
+									answer.setCorrect(chars[i] == '1');
+									answer.setAnswer(in.readLine());
+									question.addAnswer(answer);
+								}
 							}
 							question.setRemainAnswers(answerTimes);
 							question.setAnswerTimesFail(answerTimesFail);
@@ -117,7 +120,7 @@ public class QuestionBankLoader
 				{
 					Log.e(TAG, "AsyncTask.doInBackground", e);
 					Toast.makeText(context, R.string.fail, Toast.LENGTH_LONG).show();
-					
+
 					try
 					{
 						inputStream.close();
