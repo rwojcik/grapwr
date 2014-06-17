@@ -1,0 +1,213 @@
+
+X0101
+1. Które z wymienionych technik zazwyczaj negatywnie wp³ywa na wydajnoœæ aplikacji Java:
+nie stosowanie metod synchronizowanych
+operacje bezpoœrednio na plikach zamiast na rekordach
+stosowanie gotowych klas API zamiast w³asnych implementacji klas odpowiadaj¹cych im
+stosowanie metod synchronizowanych
+
+X001110
+2. Zjawisko inwersji priorytetów charakteryzuje siê cechami (zaznacz w³aœciwe):
+usuwania zadañ krytycznych
+wystêpuj¹ okreœlonej d³ugoœci ikresy zamian priorytetów
+zadanie o wy¿szym priorytecie czeka na zadanie o ni¿szym priorytecie
+dotyczy zasobów z wy³¹cznym dostêpem
+opóŸnienie zadañ krytycznych
+wszystke zasoby s¹ wspó³dzielone
+
+X0110
+3. W mikrokontrolerach sygna³ o modulowanej szerokoœci realizuje siê za pomoc¹ uk³adów (zaznacz w³aœciwe):
+transmisji szeregowej
+liczników
+portów we/wy
+przetworników A/C C/A
+
+X1100
+4. Konfiguracja (ang. configuration) jest elementem architektury Java 2 dla systemów wbudowanych, który (zaznacz w³aœciwe):
+mo¿e byæ czêœciowo realizowany sprzêtowo
+okreœla maszynê wirtualn¹ Javy
+definiuje wspólne œrodowisko dla Midletów i Xletów
+bazuje na elemencie architektury profil (ang. profile)
+
+X0110
+5. Które elementy mikrosystemu s¹ potrzebne do realizacji portu transmisji szeregowej?
+komparator
+rejestr przesuwny
+port we/wy
+przetwornik A/C
+
+X1000
+6. Wpisz nazwy klas/metod u¿ytecznych dla oszczêdzania pamiêci w aplikacjach wbudowanych Java:
+tekst: StringBuffer; komunikacja HTTP: HttpConnection.getLength()
+tekst: BufferedReader; komunikacja HTTP: HttpConnection.get()
+tekst: StringBuffer; komunikacja HTTP: HttpConnection.getMemory()
+tekst: Scanner; komunikacja HTTP: HttpConnection.getLength()
+
+X1001
+7. Profil jest elementem architektury Java 2 dla systemów wbudowanych, który (zaznacz w³aœciwe):
+zwykle zawiera biblioteki dla interfejsu we/wy
+definiuje stosowan¹ maszynê wirtualn¹ Javy
+jest definiowany niezale¿nie od mo¿liwoœci sprzêtowych urz¹dzeñ
+mo¿e zawê¿aæ (ograniczaæ) biblioteki zdefiniowane w konfiguracji
+
+X0010
+8. Uzupe³nij poni¿szy kod aplikacji Java ME dotycz¹cy obs³ugi ekranu - ustawienia komponentu listy na ekranie.
+Display zmienna2 = Display.getDisplay(); zmienna2.setCurrent(zmienna1)
+Display zmienna2 = Display.getDisplay(); zmienna2.getCurrent(zmienna1)
+Display zmienna2 = Display.getDisplay(this); zmienna2.setCurrent(zmienna1)
+Display zmienna2 = Display.getDisplay(this); zmienna2.getCurrent(zmienna1)
+
+X1001
+9. Dla systemu z serwerem zadañ aperiodycznych (Defferable server) prawdziwe s¹ stwierdzenia (zaznacz w³aœciwe):
+serwer ma zawsze wy¿szy priorytet ni¿ zadania periodyczne
+bud¿et serwera jest zawsze zu¿ywany do zera w przeci¹gu okresu serwera
+zadania aperiodyczne maj¹ zawsze pierwszeñstwo przed zadaniami periodycznymi
+bud¿et serwera jest odnawiany co okres serwera
+
+X001100
+10. Które okreœlenia charakteryzuj¹ Harwardzk¹ architekturê pamiêci?
+jednolita przestrzeñ adresowa
+zunifikowana lista rozkazów
+oddzielna szyna danych i rozkazów
+niejednoznacznoœæ rozkazów
+skomplikowane programowanie ?
+praca z technik¹ wczesnego wczytywania danych ?
+
+X0100
+11. Który z poni¿szych fragmentów kodu aplikacji MHP w w³aœciwy sposób zakoñczy dzia³anie aplikacji?
+metoda_koniec() { destroyXlet(...); }
+metoda_koniec() { notifyDestroyed(); }
+destroyXlet(...) { notifyDestroyed() }
+notifyDestroyed() { destroyXlet(...) }
+
+X010
+12. Co zawiera pole X w transmisji dla interfejsu I^2C?  [S][ADDRESS][R/W][A][DATA][X][DATA][X]...
+bit synchronizacji transmisji
+bit potwierdzenia odbioru
+bit parzystoœci (korekcji)
+
+X1001
+13. Diagram rozmieszczenia prezentuje:
+wêz³y oraz ich po³¹czenia
+obiekty aktywne
+odwzorowanie oprogramowania na platformê sprzêtow¹
+rozmieszczenie komponentów w wêz³ach
+
+X1000
+14. Sensory s³u¿¹ do: 
+Konwersji fizycznych parametrow œrodowiska na sygna³y systemu
+Konwersji wyjœcia interfejsu wyj. systemu na akcjê fizyczn¹
+Konwersji zakresu (wzmocnienie, przesuniêcie), typu (normowanie) i selekcji sygna³u
+Dostosowania przep³ywu informacji do sposobu dzia³ania systemu sterowania (AC/CA)
+
+X0100
+15. Aktuatory s³u¿a do:
+Konwersji fizycznych parametrow œrodowiska na sygna³y systemu
+Konwersji wyjœcia interfejsu wyj. systemu na akcjê fizyczn¹
+Konwersji zakresu (wzmocnienie, przesuniêcie), typu (normowanie) i selekcji sygna³u
+Dostosowania przep³ywu informacji do sposobu dzia³ania systemu sterowania (AC/CA)
+
+X0010
+16. Bloki dopasowania we/wy s³u¿¹ do: 
+Konwersji fizycznych parametrow œrodowiska na sygna³y systemu
+Konwersji wyjœcia interfejsu wyj. systemu na akcjê fizyczn¹
+Konwersji zakresu (wzmocnienie, przesuniêcie), typu (normowanie) i selekcji sygna³u
+Dostosowania przep³ywu informacji do sposobu dzia³ania systemu sterowania (AC/CA)
+
+X0001
+17. Uk³ady we/wy s³u¿¹ do:
+Konwersji fizycznych parametrow œrodowiska na sygna³y systemu
+Konwersji wyjœcia interfejsu wyj. systemu na akcjê fizyczn¹
+Konwersji zakresu (wzmocnienie, przesuniêcie), typu (normowanie) i selekcji sygna³u
+Dostosowania przep³ywu informacji do sposobu dzia³ania systemu sterowania (AC/CA)
+
+X100110
+18. Jakie metody bêd¹ wykonane przy pierwszym uruchomieniu aplikacji android (czerwone ok):
+onCreate
+OnInit
+onStop
+onResume
+onStart
+onPause
+
+X1001
+19.Co jest brane pod uwagê przy startowaniu aktywnoœci z wykorzystaniem filtra intencji:
+nazwa klasy wywo³ywanej intencji
+nazwa obiektu wywo³ywanej intencji
+nazwa aktywnoœci z pliku R.java
+nazwa aktywnoœci w filtrze intencji
+
+X1010101001
+20. Wybierz w³aœciwoœci opisuj¹ce systemy operacyjne czasu rzeczywistego sterowane czasem:
+niepodatnoœæ na przeci¹¿enia
+zwiêkszona wariancja czasu odpowiedzi
+operacje w rytmie czasu zegarowego
+podatnoœæ na przeci¹¿enia
+minimalna wariancja czasu odpowiedzi
+praca w trybie asynchronicznym
+dla aplikacji "twardego" czasu rzeczywistego (CR)
+praca w trybie asynchronicznym (odbiór zdarzeñ)
+np. QNX
+np. MARS
+
+X0000
+[nie znalaz³em]21. Na czym polega problem reaktywnoœci w systemach wbudowanych:
+koniecznoœæ synchronicznej reakcji na sygna³y wejœciowe
+koniecznoœc asynchronicznej sygnalizacji stanów wewnêtrznych
+koniecznoœæ wspó³pracy elementów czsu rzeczywistego i interaktywnych w systemie
+koniecznoœæ wspó³pracy elementów reaktywnych i pasywnych w systemie
+
+X11001
+22. Które okreœlenia charakteryzuj¹ architekturê pamiêci Von-Neumanna (Princeton)?
+Wspólna pamieæ dla danych i rozkazów
+wspólna szyna danych i instrukcji
+oddzielna szyna danych i rozkazów
+rozdzielona pamiêæ dla danych oraz rozkazów
+wolniejsza realizacja cyklu rozkazowego
+
+X01010110110
+23. Wybierz w³aœciwoœci opisuj¹ce systemy operacyjne czasu rzeczywistego sterowane zdarzeniami:
+niepodatnoœæ na przeci¹¿enia
+zwiêkszona wariancja czasu odpowiedzi
+operacje w rytmie czasu zegarowego
+podatnoœæ na przeci¹¿enia
+minimalna wariancja czasu odpowiedzi
+bardziej przypominaj¹ SO ogólnego przeznaczenia
+praca w trybie asynchronicznym (odbiór zdarzeñ)
+dla aplikacji "twardego" czasu rzeczywistego (CR)
+du¿a oferta i wygoda narzêdzi deweloperskich
+np. QNX
+np. MARS
+
+X11110000
+24. Systemy SOCR o rygorystycznych/mocnych/twardych wymaganiach czasowych (ang. Hard RTOS):
+Gwarantuj¹ terminowe wype³nianie krytycznych zadañ
+Dodatkowo mog¹ stawiaæ wymaganie dostarczenia wyniku do otoczenia w okreœlonym czasie
+Brak tolerancji niedotrzymania jakichkolwiek ograniczeñ czasowych
+Maksymalny czas odpowiedzi
+Zredukowane wymagania czasowe (d³u¿sze opóŸnienie – gorzej)
+Meta-wymagania – stochastyczny model dla opóŸnionych obliczeñ (Np. wymogi spe³nienia œredniego czasu odpowiedzi)
+Brak korzyœci w przypadku niedotrzymania czasu odpowiedzi
+Niedotrzymanie terminu nie jest krytyczne
+
+X00001100
+25. Systemy SOCR o ³agodnych/miêkkich wymaganiach czasowych (ang. Soft RTOS):
+Gwarantuj¹ terminowe wype³nianie krytycznych zadañ
+Dodatkowo mog¹ stawiaæ wymaganie dostarczenia wyniku do otoczenia w okreœlonym czasie
+Brak tolerancji niedotrzymania jakichkolwiek ograniczeñ czasowych
+Maksymalny czas odpowiedzi
+Zredukowane wymagania czasowe (d³u¿sze opóŸnienie – gorzej)
+Meta-wymagania – stochastyczny model dla opóŸnionych obliczeñ (Np. wymogi spe³nienia œredniego czasu odpowiedzi)
+Brak korzyœci w przypadku niedotrzymania czasu odpowiedzi
+Niedotrzymanie terminu nie jest krytyczne
+
+X00000011
+26. Systemy SOCR o solidnych wymaganiach czasowych (ang. Firm RTOS):
+Gwarantuj¹ terminowe wype³nianie krytycznych zadañ
+Dodatkowo mog¹ stawiaæ wymaganie dostarczenia wyniku do otoczenia w okreœlonym czasie
+Brak tolerancji niedotrzymania jakichkolwiek ograniczeñ czasowych
+Maksymalny czas odpowiedzi
+Zredukowane wymagania czasowe (d³u¿sze opóŸnienie – gorzej)
+Meta-wymagania – stochastyczny model dla opóŸnionych obliczeñ (Np. wymogi spe³nienia œredniego czasu odpowiedzi)
+Brak korzyœci w przypadku niedotrzymania czasu odpowiedzi
+Niedotrzymanie terminu nie jest krytyczne
