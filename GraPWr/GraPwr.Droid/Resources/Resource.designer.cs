@@ -28,6 +28,22 @@ namespace GraPwr.Droid
 		{
 		}
 		
+		public partial class Array
+		{
+			
+			// aapt resource value: 0x7f060000
+			public const int spinner_list = 2131099648;
+			
+			static Array()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Array()
+			{
+			}
+		}
+		
 		public partial class Attribute
 		{
 			
@@ -41,11 +57,49 @@ namespace GraPwr.Droid
 			}
 		}
 		
+		public partial class Color
+		{
+			
+			// aapt resource value: 0x7f080000
+			public const int Green = 2131230720;
+			
+			static Color()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Color()
+			{
+			}
+		}
+		
+		public partial class Dimension
+		{
+			
+			// aapt resource value: 0x7f040000
+			public const int activity_horizontal_margin = 2130968576;
+			
+			// aapt resource value: 0x7f040001
+			public const int activity_vertical_margin = 2130968577;
+			
+			static Dimension()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Dimension()
+			{
+			}
+		}
+		
 		public partial class Drawable
 		{
 			
 			// aapt resource value: 0x7f020000
-			public const int Icon = 2130837504;
+			public const int game_progressbar = 2130837504;
+			
+			// aapt resource value: 0x7f020001
+			public const int Icon = 2130837505;
 			
 			static Drawable()
 			{
@@ -60,8 +114,68 @@ namespace GraPwr.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f050000
-			public const int myButton = 2131034112;
+			// aapt resource value: 0x7f09000b
+			public const int RelativeLayout1 = 2131296267;
+			
+			// aapt resource value: 0x7f090001
+			public const int ScrollView1 = 2131296257;
+			
+			// aapt resource value: 0x7f090005
+			public const int buttonGame1 = 2131296261;
+			
+			// aapt resource value: 0x7f090014
+			public const int buttonMainStart = 2131296276;
+			
+			// aapt resource value: 0x7f090004
+			public const int checkboxesContainerGame1 = 2131296260;
+			
+			// aapt resource value: 0x7f090000
+			public const int container = 2131296256;
+			
+			// aapt resource value: 0x7f090008
+			public const int progressBarGame1 = 2131296264;
+			
+			// aapt resource value: 0x7f09000a
+			public const int progressBarGame2 = 2131296266;
+			
+			// aapt resource value: 0x7f090002
+			public const int relativeLayoutGame = 2131296258;
+			
+			// aapt resource value: 0x7f090010
+			public const int seekBarMain1 = 2131296272;
+			
+			// aapt resource value: 0x7f090013
+			public const int seekBarMain2 = 2131296275;
+			
+			// aapt resource value: 0x7f09000d
+			public const int spinnerMain = 2131296269;
+			
+			// aapt resource value: 0x7f090003
+			public const int textViewGame1 = 2131296259;
+			
+			// aapt resource value: 0x7f090006
+			public const int textViewGame2 = 2131296262;
+			
+			// aapt resource value: 0x7f090007
+			public const int textViewGame3 = 2131296263;
+			
+			// aapt resource value: 0x7f090009
+			public const int textViewGame4 = 2131296265;
+			
+			// aapt resource value: 0x7f09000c
+			public const int textViewMain1 = 2131296268;
+			
+			// aapt resource value: 0x7f09000e
+			public const int textViewMain2 = 2131296270;
+			
+			// aapt resource value: 0x7f09000f
+			public const int textViewMain3 = 2131296271;
+			
+			// aapt resource value: 0x7f090011
+			public const int textViewMain4 = 2131296273;
+			
+			// aapt resource value: 0x7f090012
+			public const int textViewMain5 = 2131296274;
 			
 			static Id()
 			{
@@ -77,7 +191,16 @@ namespace GraPwr.Droid
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int Main = 2130903040;
+			public const int Activity_Main = 2130903040;
+			
+			// aapt resource value: 0x7f030001
+			public const int Fragment_Game = 2130903041;
+			
+			// aapt resource value: 0x7f030002
+			public const int Fragment_Main = 2130903042;
+			
+			// aapt resource value: 0x7f030003
+			public const int Main = 2130903043;
 			
 			static Layout()
 			{
@@ -92,11 +215,80 @@ namespace GraPwr.Droid
 		public partial class String
 		{
 			
-			// aapt resource value: 0x7f040001
-			public const int app_name = 2130968577;
+			// aapt resource value: 0x7f050001
+			public const int action_settings = 2131034113;
 			
-			// aapt resource value: 0x7f040000
-			public const int hello = 2130968576;
+			// aapt resource value: 0x7f050000
+			public const int app_name = 2131034112;
+			
+			// aapt resource value: 0x7f050005
+			public const int blank = 2131034117;
+			
+			// aapt resource value: 0x7f050012
+			public const int check_answer = 2131034130;
+			
+			// aapt resource value: 0x7f050002
+			public const int check_updates = 2131034114;
+			
+			// aapt resource value: 0x7f05000f
+			public const int choose_answer = 2131034127;
+			
+			// aapt resource value: 0x7f05000b
+			public const int choose_data = 2131034123;
+			
+			// aapt resource value: 0x7f05000c
+			public const int choose_repeating = 2131034124;
+			
+			// aapt resource value: 0x7f05000d
+			public const int choose_repeating_wrong_answer = 2131034125;
+			
+			// aapt resource value: 0x7f050009
+			public const int downloading = 2131034121;
+			
+			// aapt resource value: 0x7f05000a
+			public const int downloading_locations = 2131034122;
+			
+			// aapt resource value: 0x7f050007
+			public const int fail = 2131034119;
+			
+			// aapt resource value: 0x7f050017
+			public const int game_score = 2131034135;
+			
+			// aapt resource value: 0x7f050014
+			public const int good_answer = 2131034132;
+			
+			// aapt resource value: 0x7f050010
+			public const int good_to_bad = 2131034128;
+			
+			// aapt resource value: 0x7f050011
+			public const int known = 2131034129;
+			
+			// aapt resource value: 0x7f050018
+			public const int new_game = 2131034136;
+			
+			// aapt resource value: 0x7f050015
+			public const int next_question = 2131034133;
+			
+			// aapt resource value: 0x7f050006
+			public const int please_wait = 2131034118;
+			
+			// aapt resource value: 0x7f050008
+			public const int start_playing = 2131034120;
+			
+			// aapt resource value: 0x7f050004
+			public const int test = 2131034116;
+			
+			// aapt resource value: 0x7f050016
+			public const int title_activity_finish = 2131034134;
+			
+			// aapt resource value: 0x7f05000e
+			public const int title_activity_game = 2131034126;
+			
+			// aapt resource value: 0x7f050003
+			public const int updates_downloaded = 2131034115;
+			
+			// aapt resource value: 0x7f050013
+			public const int wrong_answer = 2131034131;
 			
 			static String()
 			{
@@ -104,6 +296,25 @@ namespace GraPwr.Droid
 			}
 			
 			private String()
+			{
+			}
+		}
+		
+		public partial class Style
+		{
+			
+			// aapt resource value: 0x7f070000
+			public const int AppBaseTheme = 2131165184;
+			
+			// aapt resource value: 0x7f070001
+			public const int AppTheme = 2131165185;
+			
+			static Style()
+			{
+				global::Android.Runtime.ResourceIdManager.UpdateIdValues();
+			}
+			
+			private Style()
 			{
 			}
 		}

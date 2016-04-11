@@ -1,5 +1,36 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
-	<string name="hello">Hello World, Click Me!</string>
-	<string name="app_name">GraPwr.Droid</string>
+
+    <string name="app_name">Gra PWr</string>
+    <string name="action_settings">Ustawienia</string>
+    <string name="check_updates">Sprawdź aktualizację</string>
+    <string name="updates_downloaded">Pobrano informacje o %s bazie(ach) pytań</string>
+    <string name="test">Pobrano informacje o %s bazie(ach) pytań</string>
+    <string name="blank">blank</string>
+    <string name="please_wait">Zaczekaj</string>
+    <string name="fail">Błąd!</string>
+    <string name="start_playing">Rozpocznij naukę</string>
+    <string name="downloading">Pobieranie…</string>
+    <string name="downloading_locations">Pobieranie baz</string>
+    <string name="choose_data">Wybierz przedmiot:</string>
+    <string name="choose_repeating">Wybierz ilość powtórzeń każdego pytania:</string>
+    <string name="choose_repeating_wrong_answer">Wybierz ilość powtórzeń w przypadku złej odpowiedzi:</string>
+
+    <string-array name="spinner_list">
+        <item>PIO_W</item>
+    </string-array><string name="title_activity_game">Graj</string>
+
+    <string name="choose_answer">Wybierz odpowiedź(i):</string>
+    <string name="good_to_bad">Odpowiedzi dobre/złe:</string>
+    <string name="known">Opanowane:</string>
+    <string name="check_answer">Sprawdź</string>
+    <string name="wrong_answer">Zła odpowiedź :(</string>
+    <string name="good_answer">Dobra odpowiedź!</string>
+    <string name="next_question">Następne pytanie…</string>
+    
+    
+    <string name="title_activity_finish">Koniec gry</string>
+    <string name="game_score">Gratulacje! Ukończyłeś grę</string>
+    <string name="new_game">Nowa gra</string>
+
 </resources>
