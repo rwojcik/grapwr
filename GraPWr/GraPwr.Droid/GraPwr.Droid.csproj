@@ -53,6 +53,7 @@
     <Compile Include="Views\Activities\MainActivity.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Views\Fragments\QuestionFragment.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
@@ -67,6 +68,9 @@
     <AndroidResource Include="Resources\layout\Fragment_Main.axml">
       <SubType>AndroidResource</SubType>
     </AndroidResource>
+    <AndroidResource Include="Resources\layout\Activity_Finish.axml" />
+    <AndroidResource Include="Resources\layout\Activity_Game.axml" />
+    <AndroidResource Include="Resources\layout\Fragment_Finish.axml" />
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\layout\Main.axml" />

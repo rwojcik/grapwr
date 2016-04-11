@@ -114,68 +114,80 @@ namespace GraPwr.Droid
 		public partial class Id
 		{
 			
-			// aapt resource value: 0x7f09000b
-			public const int RelativeLayout1 = 2131296267;
-			
-			// aapt resource value: 0x7f090001
-			public const int ScrollView1 = 2131296257;
+			// aapt resource value: 0x7f09000f
+			public const int RelativeLayout1 = 2131296271;
 			
 			// aapt resource value: 0x7f090005
-			public const int buttonGame1 = 2131296261;
-			
-			// aapt resource value: 0x7f090014
-			public const int buttonMainStart = 2131296276;
+			public const int ScrollView1 = 2131296261;
 			
 			// aapt resource value: 0x7f090004
-			public const int checkboxesContainerGame1 = 2131296260;
+			public const int buttonFinish1 = 2131296260;
+			
+			// aapt resource value: 0x7f090009
+			public const int buttonGame1 = 2131296265;
+			
+			// aapt resource value: 0x7f090018
+			public const int buttonMainStart = 2131296280;
+			
+			// aapt resource value: 0x7f090008
+			public const int checkboxesContainerGame1 = 2131296264;
 			
 			// aapt resource value: 0x7f090000
 			public const int container = 2131296256;
 			
-			// aapt resource value: 0x7f090008
-			public const int progressBarGame1 = 2131296264;
-			
-			// aapt resource value: 0x7f09000a
-			public const int progressBarGame2 = 2131296266;
-			
-			// aapt resource value: 0x7f090002
-			public const int relativeLayoutGame = 2131296258;
-			
-			// aapt resource value: 0x7f090010
-			public const int seekBarMain1 = 2131296272;
-			
-			// aapt resource value: 0x7f090013
-			public const int seekBarMain2 = 2131296275;
-			
-			// aapt resource value: 0x7f09000d
-			public const int spinnerMain = 2131296269;
-			
-			// aapt resource value: 0x7f090003
-			public const int textViewGame1 = 2131296259;
-			
-			// aapt resource value: 0x7f090006
-			public const int textViewGame2 = 2131296262;
-			
-			// aapt resource value: 0x7f090007
-			public const int textViewGame3 = 2131296263;
-			
-			// aapt resource value: 0x7f090009
-			public const int textViewGame4 = 2131296265;
-			
 			// aapt resource value: 0x7f09000c
-			public const int textViewMain1 = 2131296268;
+			public const int progressBarGame1 = 2131296268;
 			
 			// aapt resource value: 0x7f09000e
-			public const int textViewMain2 = 2131296270;
+			public const int progressBarGame2 = 2131296270;
 			
-			// aapt resource value: 0x7f09000f
-			public const int textViewMain3 = 2131296271;
+			// aapt resource value: 0x7f090006
+			public const int relativeLayoutGame = 2131296262;
+			
+			// aapt resource value: 0x7f090014
+			public const int seekBarMain1 = 2131296276;
+			
+			// aapt resource value: 0x7f090017
+			public const int seekBarMain2 = 2131296279;
 			
 			// aapt resource value: 0x7f090011
-			public const int textViewMain4 = 2131296273;
+			public const int spinnerMain = 2131296273;
+			
+			// aapt resource value: 0x7f090001
+			public const int textViewFinish1 = 2131296257;
+			
+			// aapt resource value: 0x7f090002
+			public const int textViewFinish2 = 2131296258;
+			
+			// aapt resource value: 0x7f090003
+			public const int textViewFinish3 = 2131296259;
+			
+			// aapt resource value: 0x7f090007
+			public const int textViewGame1 = 2131296263;
+			
+			// aapt resource value: 0x7f09000a
+			public const int textViewGame2 = 2131296266;
+			
+			// aapt resource value: 0x7f09000b
+			public const int textViewGame3 = 2131296267;
+			
+			// aapt resource value: 0x7f09000d
+			public const int textViewGame4 = 2131296269;
+			
+			// aapt resource value: 0x7f090010
+			public const int textViewMain1 = 2131296272;
 			
 			// aapt resource value: 0x7f090012
-			public const int textViewMain5 = 2131296274;
+			public const int textViewMain2 = 2131296274;
+			
+			// aapt resource value: 0x7f090013
+			public const int textViewMain3 = 2131296275;
+			
+			// aapt resource value: 0x7f090015
+			public const int textViewMain4 = 2131296277;
+			
+			// aapt resource value: 0x7f090016
+			public const int textViewMain5 = 2131296278;
 			
 			static Id()
 			{
@@ -191,16 +203,25 @@ namespace GraPwr.Droid
 		{
 			
 			// aapt resource value: 0x7f030000
-			public const int Activity_Main = 2130903040;
+			public const int Activity_Finish = 2130903040;
 			
 			// aapt resource value: 0x7f030001
-			public const int Fragment_Game = 2130903041;
+			public const int Activity_Game = 2130903041;
 			
 			// aapt resource value: 0x7f030002
-			public const int Fragment_Main = 2130903042;
+			public const int Activity_Main = 2130903042;
 			
 			// aapt resource value: 0x7f030003
-			public const int Main = 2130903043;
+			public const int Fragment_Finish = 2130903043;
+			
+			// aapt resource value: 0x7f030004
+			public const int Fragment_Game = 2130903044;
+			
+			// aapt resource value: 0x7f030005
+			public const int Fragment_Main = 2130903045;
+			
+			// aapt resource value: 0x7f030006
+			public const int Main = 2130903046;
 			
 			static Layout()
 			{
